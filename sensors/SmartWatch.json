@@ -1,0 +1,91 @@
+{
+  "id": "https://.../td/SmartWatch",
+  "@context": "https://schema.iot.webizing.org",
+  "@type": ["SmartWatch"],
+  "name": "SmartWatch Sensor",
+  "names": "",
+  "description" : "걸음 수, 심박, 운동시간, 일어서 있는 시간 로깅 ex)Fitbit, AppleWatch",
+  "properties": {
+    "user": {
+      "@type": "user",
+      "type": "string",
+      "description": "user of the sensor - format: firstName+LastName ex)jonghoLee, wanhoIm",
+      "forms": [{
+          "href": "URL",
+          "mediaType": "application/json"
+        }],
+      "readOnly": true
+    },
+    "address": {
+      "@type": "address",
+      "type": "string",
+      "description": "building where the sensor resides - format: organization-building ex)yongjaelee-house, kist-l1, kist-l8",
+      "forms": [{"href": "URL", "mediaType": "application/json"}],
+      "readOnly": true
+    },
+    "room": {
+      "type": "room",
+      "@type": "schema:Text",
+      "description": "room number of the building where the sensor resides - ex) L8321",
+      "forms": [{"href": "URL", "mediaType": "application/json"}],
+      "readOnly": true
+    },
+    "location": {
+      "@type": "location",
+      "type": "string",
+      "description": "location of the sensor - format: free",
+      "forms": [{"href": "URL", "contentType": "application/json"}],
+      "readOnly": true
+    },
+    "time": {
+      "@type": "time",
+      "type": "string",
+      "description": "time at which the data measurement was made - ex)\"2017-05-30T18:54:20+09:00\"",
+      "forms": [{"href": "URL", "contentType": "application/json"}],
+      "readOnly": true
+    },
+    "startDate": {
+      "@type": "startDate",
+      "type": "string",
+      "description": "start time ex)2017-09-10T00:00:00+09:00",
+      "forms": [{"href": "URL", "contentType": "application/json"}],
+      "readOnly": true
+    },
+    "endDate": {
+      "@type": "endDate",
+      "type": "string",
+      "description": "sleep end time ex)2017-09-10T06:30:00+09:00",
+      "forms": [{"href": "URL", "contentType": "application/json"}],
+      "readOnly": true
+    },
+    "stepCount": {
+      "@type": "stepCount",
+      "type": "integer",
+      "description": "걸음 수",
+      "forms": [{"href": "URL", "contentType": "application/json"}],
+      "readOnly": true
+    },
+    "heartRate": {
+      "@type": "heartRate",
+      "type": "integer",
+      "description": "심박수 - unit: count/min",
+      "forms": [{"href": "URL", "contentType": "application/json"}],
+      "readOnly": true
+    },
+    "exerciseTime": {
+      "@type": "exerciseTime",
+      "type": "number",
+      "description": "운동시간 - unit: minute",
+      "readOnly": true
+    },
+    "standHour": {
+      "@type": "standHour",
+      "type": "number",
+      "description": "일어선 시간 - 1: 1시간, 0: 0시간",
+      "forms": [{"href": "URL", "contentType": "application/json"}],
+      "readOnly": true
+    }
+  },
+  "securityDefinitions": {"nosec_sc": {"scheme": "nosec"}},
+  "security": ["nosec_sc"]
+}

@@ -1,0 +1,74 @@
+{
+  "id": "https://.../td/Cushion",
+  "@context": "https://schema.iot.webizing.org",
+  "@type": ["EnergyApplianceMonitor"],
+  "name": "EnergyApplianceMonitor Sensor",
+  "names": "",
+  "description" : "공기질 로깅 ex)Foobot(5분 주기로 데이터를 가져옴)",
+  "properties": {
+    "user": {
+      "@type": "user",
+      "type": "string",
+      "description": "user of the sensor - format: firstName+LastName ex)jonghoLee, wanhoIm",
+      "forms": [{
+          "href": "there should be url for access value of this property",
+          "mediaType": "application/json"
+        }],
+      "readOnly": true
+    },
+    "address": {
+      "@type": "address",
+      "type": "string",
+      "description": "building where the sensor resides - format: organization-building ex)yongjaelee-house, kist-l1, kist-l8",
+      "forms": [{"href": "there should be url for access value of this property", "mediaType": "application/json"}],
+      "observable": false,
+      "readOnly": true,
+      "writeOnly": false
+    },
+    "room": {
+      "@type": "room",
+      "type": "string",
+      "description": "room number of the building where the sensor resides - ex) L8321",
+      "forms": [{"href": "there should be url for access value of this property", "mediaType": "application/json"}],
+      "observable": false,
+      "readOnly": true,
+      "writeOnly": false
+    },
+    "location": {
+      "@type": "location",
+      "type": "string",
+      "description": "location of the sensor - format: free",
+      "forms": [{"href": "there should be url for access value of this property", "contentType": "application/json"}],
+      "observable": false,
+      "readOnly": true,
+      "writeOnly": false
+    },
+    "time": {
+      "@type": "time",
+      "type": "string",
+      "description": "time at which the data measurement was made - ex)\"2017-05-30T18:54:20+09:00\"",
+      "forms": [{"href": "there should be url for access value of this property", "contentType": "application/json"}],
+      "observable": false,
+      "readOnly": true,
+      "writeOnly": false
+    },
+    "applianceId": {
+      "@type": "applianceId",
+      "type": "string",
+      "description": "unit is to be defined",
+      "forms": [{"href": "there should be url for access value of this property", "contentType": "application/json"}],
+      "observable": false,
+      "readOnly": true,
+      "writeOnly": false
+    },
+    "activePower": {
+      "@type": "activePower",
+      "type": "number",
+      "description": "appliance activePower - unit: W, 양수: On, 음수: Off",
+      "forms": [{"href": "there should be url for access value of this property", "contentType": "application/json"}],
+      "readOnly": true
+    }
+  },
+  "securityDefinitions": {"nosec_sc": {"scheme": "nosec"}},
+  "security": ["nosec_sc"]
+}

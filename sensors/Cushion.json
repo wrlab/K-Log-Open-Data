@@ -1,0 +1,72 @@
+{
+  "id": "https://.../td/Cushion",
+  "@context": "https://schema.iot.webizing.org/"
+  ,
+  "@type": ["Cushion"],
+  "name": "Cushion Sensor",
+  "names": "",
+  "description" : "앉아 있는지 여부를 판단",
+  "properties": {
+    "user": {
+      "@type": "user",
+      "type": "string",
+      "description": "user of the sensor - format: firstName+LastName ex)jonghoLee, wanhoIm",
+      "forms": [{
+          "href": "there should be url for access value of this property",
+          "mediaType": "application/json"
+        }],
+      "readOnly": true
+    },
+    "address": {
+      "@type": "address",
+      "type": "string",
+      "description": "building where the sensor resides - format: organization-building ex)yongjaelee-house, kist-l1, kist-l8",
+      "forms": [{"href": "there should be url for access value of this property", "mediaType": "application/json"}],
+      "readOnly": true
+    },
+    "room": {
+      "@type": "room",
+      "type": "string",
+      "description": "room number of the building where the sensor resides - ex) L8321",
+      "forms": [{"href": "there should be url for access value of this property", "mediaType": "application/json"}],
+      "readOnly": true
+    },
+    "location": {
+      "@type": "location",
+      "type": "string",
+      "description": "location of the sensor - format: free",
+      "forms": [{"href": "there should be url for access value of this property", "contentType": "application/json"}],
+      "readOnly": true
+    },
+    "time": {
+      "@type": "time",
+      "type": "string",
+      "description": "time at which the data measurement was made - ex)\"2017-05-30T18:54:20+09:00\"",
+      "forms": [{"href": "there should be url for access value of this property", "contentType": "application/json"}],
+      "readOnly": true
+    },
+    "pressure": {
+      "@type": "pressure",
+      "type": "number",
+      "description": "unit is to be defined",
+      "forms": [{"href": "there should be url for access value of this property", "contentType": "application/json"}],
+      "readOnly": true
+    },
+    "temp": {
+      "@type": "temp",
+      "type": "number",
+      "description": "temperature - unit: Celsius(℃)",
+      "forms": [{"href": "there should be url for access value of this property", "contentType": "application/json"}],
+      "readOnly": true
+    },
+    "status": {
+      "@type": "status",
+      "type": "number",
+      "description": "pm2.5 - unit: ㎍/㎥",
+      "forms": [{"href": "there should be url for access value of this property", "contentType": "application/json"}],
+      "readOnly": true
+    }
+  },
+  "securityDefinitions": {"nosec_sc": {"scheme": "nosec"}},
+  "security": ["nosec_sc"]
+}
