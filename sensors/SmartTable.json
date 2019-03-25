@@ -6,9 +6,23 @@
   "names": "",
   "description" : "음식 리스트, 음식 칼로리, 사진 URL 로깅",
   "properties": {
+    "name": {
+      "@type": "name",
+      "type": "string",
+      "title": "Name",
+      "description": "name of the sensor - format: firstName+LastName ex)jonghoLee, wanhoIm",
+      "forms": [
+        {
+          "href": "there should be url for access value of this property",
+          "mediaType": "application/json"
+        }
+      ],
+      "readOnly": true
+    },
     "user": {
       "@type": "schema:Text",
       "type": "string",
+      "title": "User",
       "description": "user of the sensor - format: firstName+LastName ex)jonghoLee, wanhoIm",
       "forms": [{
           "href": "URL",
@@ -19,6 +33,7 @@
     "address": {
       "@type": "address",
       "type": "string",
+      "title": "Address",
       "description": "building where the sensor resides - format: organization-building ex)yongjaelee-house, kist-l1, kist-l8",
       "forms": [{"href": "URL", "mediaType": "application/json"}],
       "readOnly": true
@@ -26,6 +41,7 @@
     "room": {
       "@type": "room",
       "type": "string",
+      "title": "Room",
       "description": "room number of the building where the sensor resides - ex) L8321",
       "forms": [{"href": "URL", "mediaType": "application/json"}],
       "readOnly": true
@@ -33,6 +49,7 @@
     "location": {
       "@type": "location",
       "type": "string",
+      "title": "Location",
       "description": "location of the sensor - format: free",
       "forms": [{"href": "URL", "contentType": "application/json"}],
       "readOnly": true
@@ -40,6 +57,7 @@
     "time": {
       "@type": "time",
       "type": "string",
+      "title": "Time",
       "description": "time at which the data measurement was made - ex)\"2017-05-30T18:54:20+09:00\"",
       "forms": [{"href": "URL", "contentType": "application/json"}],
       "readOnly": true
@@ -47,6 +65,7 @@
     "foodList": {
       "@type": "foodList",
       "type": "array",
+      "title": "FoodList",
       "description": "List of food items",
       "forms": [{"href": "URL", "contentType": "application/json"}],
       "readOnly": true
@@ -54,6 +73,7 @@
     "caloryList": {
       "@type": "caloryList",
       "type": "array",
+      "title": "CaloryList",
       "description": "List of calories for the food items",
       "forms": [{"href": "URL", "contentType": "application/json"}],
       "readOnly": true
@@ -61,6 +81,7 @@
     "snapShot": {
       "@type": "snapShot",
       "type": "string",
+      "title": "SnapShot",
       "description": "url of the snap shot of the table",
       "forms": [{"href": "URL", "contentType": "application/json"}],
       "readOnly": true

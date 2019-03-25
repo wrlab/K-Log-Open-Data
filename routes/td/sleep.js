@@ -5,7 +5,11 @@ const sleep = require('../../sensors/Sleep');
 
 
 router.get('/', function(req, res, next) {
-    res.send(sleep);
+    if (req.accepts('text/html')) {
+        res.render('./sensors-details/sleep', { sleep: sleep });
+    }else {
+        res.send(sleep);
+    }
 });
 
 module.exports = router;

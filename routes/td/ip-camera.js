@@ -5,7 +5,11 @@ const ipCamera = require('../../sensors/IPCamera');
 
 
 router.get('/', function(req, res, next) {
-    res.send(ipCamera);
+    if (req.accepts('text/html')) {
+        res.render('./sensors-details/ip', { ipCamera: ipCamera });
+    }else {
+        res.send(ipCamera);
+    }
 });
 
 module.exports = router;

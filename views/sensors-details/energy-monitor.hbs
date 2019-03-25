@@ -1,8 +1,7 @@
-<h1>{{airQuality.name}}</h1>
+<h1>{{energyMonitor.name}}</h1>
 <h3>Description</h3>
-{{airQuality.description}}
+{{energyMonitor.description}}
 <h2>Properties</h2>
-
 
 <table class="table table-bordered">
     <thead>
@@ -10,59 +9,59 @@
         <th scope="col">Property</th>
         <th scope="col">Type</th>
         <th scope="col">Description</th>
+        <th scope="col">ReadOnly</th>
     </tr>
     </thead>
     <tbody>
         <tr>
-            <th scope="row">{{airQuality.properties.name.label}} </th>
-            <td>{{airQuality.properties.name.type}}</td>
-            <td>{{airQuality.properties.name.description}}</td>
+            <th scope="row">{{energyMonitor.properties.name.title}} </th>
+            <td>{{energyMonitor.properties.name.type}}</td>
+            <td>{{energyMonitor.properties.name.description}}</td>
+            <td>{{energyMonitor.properties.name.readOnly}}</td>
         </tr>
         <tr>
-            <th scope="row">{{airQuality.properties.user.label}} </th>
-            <td>{{airQuality.properties.user.type}}</td>
-            <td>{{airQuality.properties.user.description}}</td>
+            <th scope="row">{{energyMonitor.properties.user.title}} </th>
+            <td>{{energyMonitor.properties.user.type}}</td>
+            <td>{{energyMonitor.properties.user.description}}</td>
+            <td>{{energyMonitor.properties.user.readOnly}}</td>
         </tr>
         <tr>
-            <th scope="row">{{airQuality.properties.address.label}}</th>
-            <td>{{airQuality.properties.address.type}}</td>
-            <td>{{airQuality.properties.address.description}}</td>
+            <th scope="row">{{energyMonitor.properties.address.title}}</th>
+            <td>{{energyMonitor.properties.address.type}}</td>
+            <td>{{energyMonitor.properties.address.description}}</td>
+            <td>{{energyMonitor.properties.address.readOnly}}</td>
         </tr>
         <tr>
-            <th scope="row">{{airQuality.properties.location.label}} </th>
-            <td>{{airQuality.properties.location.type}}</td>
-            <td>{{airQuality.properties.location.description}}</td>
+            <th scope="row">{{energyMonitor.properties.room.title}} </th>
+            <td>{{energyMonitor.properties.room.type}}</td>
+            <td>{{energyMonitor.properties.room.description}}</td>
+            <td>{{energyMonitor.properties.room.readOnly}}</td>
         </tr>
         <tr>
-            <th scope="row">{{airQuality.properties.time.label}}</th>
-            <td>{{airQuality.properties.time.type}}</td>
-            <td>{{airQuality.properties.time.description}}</td>
+            <th scope="row">{{energyMonitor.properties.location.title}}</th>
+            <td>{{energyMonitor.properties.location.type}}</td>
+            <td>{{energyMonitor.properties.location.description}}</td>
+            <td>{{energyMonitor.properties.location.readOnly}}</td>
         </tr>
         <tr>
-            <th scope="row">{{airQuality.properties.humidity.label}}</th>
-            <td>{{airQuality.properties.humidity.type}}</td>
-            <td>{{airQuality.properties.humidity.description}}</td>
+            <th scope="row">{{energyMonitor.properties.time.title}}</th>
+            <td>{{energyMonitor.properties.time.type}}</td>
+            <td>{{energyMonitor.properties.time.description}}</td>
+            <td>{{energyMonitor.properties.time.readOnly}}</td>
         </tr>
         <tr>
-            <th scope="row">{{airQuality.properties.temp.label}}</th>
-            <td>{{airQuality.properties.temp.type}}</td>
-            <td>{{airQuality.properties.temp.description}}</td>
+            <th scope="row">{{energyMonitor.properties.consumption.title}}</th>
+            <td>{{energyMonitor.properties.consumption.type}}</td>
+            <td>{{energyMonitor.properties.consumption.description}}</td>
+            <td>{{energyMonitor.properties.consumption.readOnly}}</td>
         </tr>
         <tr>
-            <th scope="row">{{airQuality.properties.particle.label}}</th>
-            <td>{{airQuality.properties.particle.type}}</td>
-            <td>{{airQuality.properties.particle.description}}</td>
+            <th scope="row">{{energyMonitor.properties.alwaysOn.title}}</th>
+            <td>{{energyMonitor.properties.alwaysOn.type}}</td>
+            <td>{{energyMonitor.properties.alwaysOn.description}}</td>
+            <td>{{energyMonitor.properties.alwaysOn.readOnly}}</td>
         </tr>
-        <tr>
-            <th scope="row">{{airQuality.properties.voc.label}}</th>
-            <td>{{airQuality.properties.voc.type}}</td>
-            <td>{{airQuality.properties.voc.description}}</td>
-        </tr>
-        <tr>
-            <th scope="row">{{airQuality.properties.pollution.label}} </td>
-            <td>{{airQuality.properties.pollution.type}}</td>
-            <td>{{airQuality.properties.pollution.description}}</td>
-        </tr>
+
     </tbody>
 </table>
 

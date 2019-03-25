@@ -1,8 +1,7 @@
-<h1>{{airQuality.name}}</h1>
+<h1>{{smartWatch.name}}</h1>
 <h3>Description</h3>
-{{airQuality.description}}
+{{smartWatch.description}}
 <h2>Properties</h2>
-
 
 <table class="table table-bordered">
     <thead>
@@ -10,58 +9,81 @@
         <th scope="col">Property</th>
         <th scope="col">Type</th>
         <th scope="col">Description</th>
+        <th scope="col">ReadOnly</th>
     </tr>
     </thead>
     <tbody>
         <tr>
-            <th scope="row">{{airQuality.properties.name.label}} </th>
-            <td>{{airQuality.properties.name.type}}</td>
-            <td>{{airQuality.properties.name.description}}</td>
+            <th scope="row">{{smartWatch.properties.name.title}} </th>
+            <td>{{smartWatch.properties.name.type}}</td>
+            <td>{{smartWatch.properties.name.description}}</td>
+            <td>{{smartWatch.properties.name.readOnly}}</td>
         </tr>
         <tr>
-            <th scope="row">{{airQuality.properties.user.label}} </th>
-            <td>{{airQuality.properties.user.type}}</td>
-            <td>{{airQuality.properties.user.description}}</td>
+            <th scope="row">{{smartWatch.properties.user.title}} </th>
+            <td>{{smartWatch.properties.user.type}}</td>
+            <td>{{smartWatch.properties.user.description}}</td>
+            <td>{{smartWatch.properties.user.readOnly}}</td>
         </tr>
         <tr>
-            <th scope="row">{{airQuality.properties.address.label}}</th>
-            <td>{{airQuality.properties.address.type}}</td>
-            <td>{{airQuality.properties.address.description}}</td>
+            <th scope="row">{{smartWatch.properties.address.title}}</th>
+            <td>{{smartWatch.properties.address.type}}</td>
+            <td>{{smartWatch.properties.address.description}}</td>
+            <td>{{smartWatch.properties.address.readOnly}}</td>
         </tr>
         <tr>
-            <th scope="row">{{airQuality.properties.location.label}} </th>
-            <td>{{airQuality.properties.location.type}}</td>
-            <td>{{airQuality.properties.location.description}}</td>
+            <th scope="row">{{smartWatch.properties.room.title}} </th>
+            <td>{{smartWatch.properties.room.type}}</td>
+            <td>{{smartWatch.properties.room.description}}</td>
+            <td>{{smartWatch.properties.room.readOnly}}</td>
         </tr>
         <tr>
-            <th scope="row">{{airQuality.properties.time.label}}</th>
-            <td>{{airQuality.properties.time.type}}</td>
-            <td>{{airQuality.properties.time.description}}</td>
+            <th scope="row">{{smartWatch.properties.location.title}} </th>
+            <td>{{smartWatch.properties.location.type}}</td>
+            <td>{{smartWatch.properties.location.description}}</td>
+            <td>{{smartWatch.properties.location.readOnly}}</td>
         </tr>
         <tr>
-            <th scope="row">{{airQuality.properties.humidity.label}}</th>
-            <td>{{airQuality.properties.humidity.type}}</td>
-            <td>{{airQuality.properties.humidity.description}}</td>
+            <th scope="row">{{smartWatch.properties.time.title}}</th>
+            <td>{{smartWatch.properties.time.type}}</td>
+            <td>{{smartWatch.properties.time.description}}</td>
+            <td>{{smartWatch.properties.time.readOnly}}</td>
         </tr>
         <tr>
-            <th scope="row">{{airQuality.properties.temp.label}}</th>
-            <td>{{airQuality.properties.temp.type}}</td>
-            <td>{{airQuality.properties.temp.description}}</td>
+            <th scope="row">{{smartWatch.properties.startDate.title}}</th>
+            <td>{{smartWatch.properties.startDate.type}}</td>
+            <td>{{smartWatch.properties.startDate.description}}</td>
+            <td>{{smartWatch.properties.startDate.readOnly}}</td>
         </tr>
         <tr>
-            <th scope="row">{{airQuality.properties.particle.label}}</th>
-            <td>{{airQuality.properties.particle.type}}</td>
-            <td>{{airQuality.properties.particle.description}}</td>
+            <th scope="row">{{smartWatch.properties.endDate.title}}</th>
+            <td>{{smartWatch.properties.endDate.type}}</td>
+            <td>{{smartWatch.properties.endDate.description}}</td>
+            <td>{{smartWatch.properties.endDate.readOnly}}</td>
         </tr>
         <tr>
-            <th scope="row">{{airQuality.properties.voc.label}}</th>
-            <td>{{airQuality.properties.voc.type}}</td>
-            <td>{{airQuality.properties.voc.description}}</td>
+            <th scope="row">{{smartWatch.properties.stepCount.title}}</th>
+            <td>{{smartWatch.properties.stepCount.type}}</td>
+            <td>{{smartWatch.properties.stepCount.description}}</td>
+            <td>{{smartWatch.properties.stepCount.readOnly}}</td>
         </tr>
         <tr>
-            <th scope="row">{{airQuality.properties.pollution.label}} </td>
-            <td>{{airQuality.properties.pollution.type}}</td>
-            <td>{{airQuality.properties.pollution.description}}</td>
+            <th scope="row">{{smartWatch.properties.heartRate.title}}</th>
+            <td>{{smartWatch.properties.heartRate.type}}</td>
+            <td>{{smartWatch.properties.heartRate.description}}</td>
+            <td>{{smartWatch.properties.heartRate.readOnly}}</td>
+        </tr>
+        <tr>
+            <th scope="row">{{smartWatch.properties.exerciseTime.title}} </td>
+            <td>{{smartWatch.properties.exerciseTime.type}}</td>
+            <td>{{smartWatch.properties.exerciseTime.description}}</td>
+            <td>{{smartWatch.properties.exerciseTime.readOnly}}</td>
+        </tr>
+        <tr>
+            <th scope="row">{{smartWatch.properties.standHour.title}} </td>
+            <td>{{smartWatch.properties.standHour.type}}</td>
+            <td>{{smartWatch.properties.standHour.description}}</td>
+            <td>{{smartWatch.properties.standHour.readOnly}}</td>
         </tr>
     </tbody>
 </table>

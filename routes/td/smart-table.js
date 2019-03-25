@@ -5,7 +5,11 @@ const smartTable = require('../../sensors/SmartTable');
 
 
 router.get('/', function(req, res, next) {
-    res.send(smartTable);
+    if (req.accepts('text/html')) {
+        res.render('./sensors-details/smart-table', { smartTable: smartTable });
+    }else {
+        res.send(smartTable);
+    }
 });
 
 module.exports = router;

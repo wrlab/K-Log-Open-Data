@@ -5,7 +5,11 @@ const smartWatch = require('../../sensors/SmartWatch');
 
 
 router.get('/', function(req, res, next) {
-    res.send(smartWatch);
+    if (req.accepts('text/html')) {
+        res.render('./sensors-details/smart-watch', { smartWatch: smartWatch });
+    }else {
+        res.send(smartWatch);
+    }
 });
 
 module.exports = router;

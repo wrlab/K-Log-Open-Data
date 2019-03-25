@@ -1,11 +1,15 @@
 const express = require('express');
 const router = express.Router();
 
-const ipIPFSCamera = require('../../sensors/IPFSCamera');
+const ipfsCamera = require('../../sensors/IPFSCamera');
 
 
 router.get('/', function(req, res, next) {
-    res.send(ipIPFSCamera);
+    if (req.accepts('text/html')) {
+        res.render('./sensors-details/ipfs-camera', { ipfsCamera: ipfsCamera });
+    }else {
+        res.send(ipfsCamera);;
+    }
 });
 
 module.exports = router;

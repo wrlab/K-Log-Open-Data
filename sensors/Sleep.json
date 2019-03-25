@@ -6,6 +6,19 @@
   "names": "",
   "description" : "수면 시작 시간, 수면 끝 시간, 총 수면 시간 로깅 JSON-LD Format ex)Beddit, Fitbit",
   "properties": {
+    "name": {
+      "@type": "name",
+      "type": "string",
+      "title": "Name",
+      "description": "name of the sensor - format: firstName+LastName ex)jonghoLee, wanhoIm",
+      "forms": [
+        {
+          "href": "there should be url for access value of this property",
+          "mediaType": "application/json"
+        }
+      ],
+      "readOnly": true
+    },
     "user": {
       "@type": "user",
       "type": "string",

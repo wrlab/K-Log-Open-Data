@@ -1,8 +1,7 @@
-<h1>{{airQuality.name}}</h1>
+<h1>{{cushion.name}}</h1>
 <h3>Description</h3>
-{{airQuality.description}}
+{{cushion.description}}
 <h2>Properties</h2>
-
 
 <table class="table table-bordered">
     <thead>
@@ -10,59 +9,76 @@
         <th scope="col">Property</th>
         <th scope="col">Type</th>
         <th scope="col">Description</th>
+        <th scope="col">ReadOnly</th>
     </tr>
     </thead>
     <tbody>
-        <tr>
-            <th scope="row">{{airQuality.properties.name.label}} </th>
-            <td>{{airQuality.properties.name.type}}</td>
-            <td>{{airQuality.properties.name.description}}</td>
-        </tr>
-        <tr>
-            <th scope="row">{{airQuality.properties.user.label}} </th>
-            <td>{{airQuality.properties.user.type}}</td>
-            <td>{{airQuality.properties.user.description}}</td>
-        </tr>
-        <tr>
-            <th scope="row">{{airQuality.properties.address.label}}</th>
-            <td>{{airQuality.properties.address.type}}</td>
-            <td>{{airQuality.properties.address.description}}</td>
-        </tr>
-        <tr>
-            <th scope="row">{{airQuality.properties.location.label}} </th>
-            <td>{{airQuality.properties.location.type}}</td>
-            <td>{{airQuality.properties.location.description}}</td>
-        </tr>
-        <tr>
-            <th scope="row">{{airQuality.properties.time.label}}</th>
-            <td>{{airQuality.properties.time.type}}</td>
-            <td>{{airQuality.properties.time.description}}</td>
-        </tr>
-        <tr>
-            <th scope="row">{{airQuality.properties.humidity.label}}</th>
-            <td>{{airQuality.properties.humidity.type}}</td>
-            <td>{{airQuality.properties.humidity.description}}</td>
-        </tr>
-        <tr>
-            <th scope="row">{{airQuality.properties.temp.label}}</th>
-            <td>{{airQuality.properties.temp.type}}</td>
-            <td>{{airQuality.properties.temp.description}}</td>
-        </tr>
-        <tr>
-            <th scope="row">{{airQuality.properties.particle.label}}</th>
-            <td>{{airQuality.properties.particle.type}}</td>
-            <td>{{airQuality.properties.particle.description}}</td>
-        </tr>
-        <tr>
-            <th scope="row">{{airQuality.properties.voc.label}}</th>
-            <td>{{airQuality.properties.voc.type}}</td>
-            <td>{{airQuality.properties.voc.description}}</td>
-        </tr>
-        <tr>
-            <th scope="row">{{airQuality.properties.pollution.label}} </td>
-            <td>{{airQuality.properties.pollution.type}}</td>
-            <td>{{airQuality.properties.pollution.description}}</td>
-        </tr>
+    <tr>
+        <th scope="row">{{cushion.properties.name.title}} </th>
+        <td>{{cushion.properties.name.type}}</td>
+        <td>{{cushion.properties.name.description}}</td>
+        <td>{{cushion.properties.name.readOnly}}</td>
+    </tr>
+    <tr>
+        <th scope="row">{{cushion.properties.user.title}} </th>
+        <td>{{cushion.properties.user.type}}</td>
+        <td>{{cushion.properties.user.description}}</td>
+        <td>{{cushion.properties.user.readOnly}}</td>
+    </tr>
+    <tr>
+        <th scope="row">{{cushion.properties.address.title}}</th>
+        <td>{{cushion.properties.address.type}}</td>
+        <td>{{cushion.properties.address.description}}</td>
+        <td>{{cushion.properties.address.readOnly}}</td>
+    </tr>
+    <tr>
+        <th scope="row">{{cushion.properties.room.title}} </th>
+        <td>{{cushion.properties.room.type}}</td>
+        <td>{{cushion.properties.room.description}}</td>
+        <td>{{cushion.properties.room.readOnly}}</td>
+    </tr>
+    <tr>
+        <th scope="row">{{cushion.properties.location.title}} </th>
+        <td>{{cushion.properties.location.type}}</td>
+        <td>{{cushion.properties.location.description}}</td>
+        <td>{{cushion.properties.location.readOnly}}</td>
+    </tr>
+    <tr>
+        <th scope="row">{{cushion.properties.time.title}}</th>
+        <td>{{cushion.properties.time.type}}</td>
+        <td>{{cushion.properties.time.description}}</td>
+        <td>{{cushion.properties.time.readOnly}}</td>
+    </tr>
+    <tr>
+        <th scope="row">{{cushion.properties.humidity.title}}</th>
+        <td>{{cushion.properties.humidity.type}}</td>
+        <td>{{cushion.properties.humidity.description}}</td>
+        <td>{{cushion.properties.humidity.readOnly}}</td>
+    </tr>
+    <tr>
+        <th scope="row">{{cushion.properties.temp.title}}</th>
+        <td>{{cushion.properties.temp.type}}</td>
+        <td>{{cushion.properties.temp.description}}</td>
+        <td>{{cushion.properties.temp.readOnly}}</td>
+    </tr>
+    <tr>
+        <th scope="row">{{cushion.properties.particle.title}}</th>
+        <td>{{cushion.properties.particle.type}}</td>
+        <td>{{cushion.properties.particle.description}}</td>
+        <td>{{cushion.properties.particle.readOnly}}</td>
+    </tr>
+    <tr>
+        <th scope="row">{{cushion.properties.voc.title}}</th>
+        <td>{{cushion.properties.voc.type}}</td>
+        <td>{{cushion.properties.voc.description}}</td>
+        <td>{{cushion.properties.voc.readOnly}}</td>
+    </tr>
+    <tr>
+        <th scope="row">{{cushion.properties.pollution.title}} </td>
+        <td>{{cushion.properties.pollution.type}}</td>
+        <td>{{cushion.properties.pollution.description}}</td>
+        <td>{{cushion.properties.pollution.readOnly}}</td>
+    </tr>
     </tbody>
 </table>
 
