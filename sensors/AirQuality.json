@@ -9,7 +9,7 @@
     "name": {
       "@type": "name",
       "type": "string",
-      "label": "Name",
+      "title": "Name",
       "description": "name of the sensor - format: firstName+LastName ex)jonghoLee, wanhoIm",
       "forms": [
         {
@@ -22,7 +22,7 @@
     "user": {
       "@type": "user",
       "type": "string",
-      "label": "User",
+      "title": "User",
       "description": "user of the sensor - format: firstName+LastName ex)jonghoLee, wanhoIm",
       "forms": [
         {
@@ -35,7 +35,7 @@
     "address": {
       "@type": "address",
       "type": "string",
-      "label": "Address",
+      "title": "Address",
       "description": "building where the sensor resides - format: organization-building ex)yongjaelee-house, kist-l1, kist-l8",
       "forms": [
         {
@@ -48,7 +48,7 @@
     "room": {
       "@type": "room",
       "type": "string",
-      "label": "Room",
+      "title": "Room",
       "description": "room number of the building where the sensor resides - ex) L8321",
       "forms": [
         {
@@ -61,7 +61,7 @@
     "location": {
       "@type": "location",
       "type": "string",
-      "label": "Location",
+      "title": "Location",
       "description": "location of the sensor - format: free",
       "forms": [
         {
@@ -74,7 +74,7 @@
     "time": {
       "@type": "time",
       "type": "string",
-      "label": "Time",
+      "title": "Time",
       "description": "time at which the data measurement was made - ex)\"2017-05-30T18:54:20+09:00\"",
       "forms": [
         {
@@ -82,14 +82,12 @@
           "contentType": "application/json"
         }
       ],
-      "observable": false,
-      "readOnly": true,
-      "writeOnly": false
+      "readOnly": true
     },
     "humidity": {
       "@type": "humidity",
       "type": "number",
-      "label": "Humidity",
+      "title": "Humidity",
       "description": "습도 - unit: %",
       "forms": [
         {
@@ -102,7 +100,7 @@
     "temp": {
       "@type": "temp",
       "type": "number",
-      "label": "Temp",
+      "title": "Temp",
       "description": "temperature - unit: Celsius(℃)",
       "forms": [
         {
@@ -115,7 +113,7 @@
     "particle": {
       "@type": "particle",
       "type": "number",
-      "label": "Particle",
+      "title": "Particle",
       "description": "pm2.5 - unit: ㎍/㎥",
       "forms": [
         {
@@ -128,7 +126,7 @@
     "co2": {
       "@type": "co2",
       "type": "number",
-      "label": "Co2",
+      "title": "Co2",
       "description": "이산화탄소 - unit: ppm",
       "forms": [
         {
@@ -141,7 +139,7 @@
     "voc": {
       "@type": "voc",
       "type": "number",
-      "label": "Voc",
+      "title": "Voc",
       "description": "휘발성 유기 화합물 - unit: ppb",
       "forms": [
         {
@@ -154,7 +152,7 @@
     "pollution": {
       "@type": "pollution",
       "type": "number",
-      "label": "Pollution",
+      "title": "Pollution",
       "description": "미세먼지 - unit: TBD",
       "forms": [
         {
