@@ -13,6 +13,12 @@ const smartWatch = require('../../sensors/SmartWatch');
 
 
 router.get('/', function(req, res, next) {
+    if (req.accepts('text/html')) {
+        res.render('./sensors-details/smart-watch', { smartWatch: smartWatch });
+    }else {
+        res.send(smartWatch);
+    }
+
     res.send([airQuality, cushion, energyApplianceMonitor, energyMonitor,
     ipCamera, ipIPFSCamera, sleep, smartTable, smartWatch]);
 });
