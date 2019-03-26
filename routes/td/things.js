@@ -13,14 +13,14 @@ const smartWatch = require('../../sensors/SmartWatch');
 
 
 router.get('/', function(req, res, next) {
-    if (req.accepts('text/html')) {
-        res.render('./sensors-details/smart-watch', { smartWatch: smartWatch });
-    }else {
-        res.send(smartWatch);
-    }
+    const things  = [airQuality, cushion, energyApplianceMonitor, energyMonitor,
+        ipCamera, ipIPFSCamera, sleep, smartTable, smartWatch];
 
-    res.send([airQuality, cushion, energyApplianceMonitor, energyMonitor,
-    ipCamera, ipIPFSCamera, sleep, smartTable, smartWatch]);
+    if (req.accepts('text/html')) {
+        res.render('things', { things: things });
+    } else {
+        res.send(things);
+    }
 });
 
 module.exports = router;

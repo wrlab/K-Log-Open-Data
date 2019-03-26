@@ -6,7 +6,7 @@ const energyMonitor = require('../../sensors/EnergyMonitor');
 
 router.get('/', function(req, res, next) {
     if (req.accepts('text/html')) {
-        res.render('./sensors-details/energy-monitor', { energyMonitor: energyMonitor });
+        res.render('./thing-details', { model: energyMonitor });
     }else {
         res.send(energyMonitor);
     }

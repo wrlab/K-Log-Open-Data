@@ -6,7 +6,7 @@ const smartTable = require('../../sensors/SmartTable');
 
 router.get('/', function(req, res, next) {
     if (req.accepts('text/html')) {
-        res.render('./sensors-details/smart-table', { smartTable: smartTable });
+        res.render('./thing-details', { model: smartTable });
     }else {
         res.send(smartTable);
     }

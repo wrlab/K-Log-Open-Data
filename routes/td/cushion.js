@@ -6,7 +6,7 @@ const cushion = require('../../sensors/Cushion');
 
 router.get('/', function(req, res, next) {
     if (req.accepts('text/html')) {
-        res.render('./sensors-details/cushion', { cushion: cushion });
+        res.render('./thing-details', { model: cushion });
     }else {
         res.send(cushion);
     }

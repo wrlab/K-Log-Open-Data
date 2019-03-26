@@ -6,7 +6,7 @@ const sleep = require('../../sensors/Sleep');
 
 router.get('/', function(req, res, next) {
     if (req.accepts('text/html')) {
-        res.render('./sensors-details/sleep', { sleep: sleep });
+        res.render('./thing-details', { model: sleep });
     }else {
         res.send(sleep);
     }

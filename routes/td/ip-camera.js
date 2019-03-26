@@ -6,7 +6,7 @@ const ipCamera = require('../../sensors/IPCamera');
 
 router.get('/', function(req, res, next) {
     if (req.accepts('text/html')) {
-        res.render('./sensors-details/ip-camera', { ipCamera: ipCamera });
+        res.render('./thing-details', { model: ipCamera });
     }else {
         res.send(ipCamera);
     }

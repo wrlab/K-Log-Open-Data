@@ -6,7 +6,7 @@ const smartWatch = require('../../sensors/SmartWatch');
 
 router.get('/', function(req, res, next) {
     if (req.accepts('text/html')) {
-        res.render('./sensors-details/smart-watch', { smartWatch: smartWatch });
+        res.render('./thing-details', { model: smartWatch });
     }else {
         res.send(smartWatch);
     }

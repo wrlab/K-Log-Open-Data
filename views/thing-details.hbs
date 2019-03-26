@@ -1,0 +1,27 @@
+<h1>{{model.name}}</h1>
+<h3>Description</h3>
+{{model.description}}
+<h2>Properties</h2>
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th scope="col">Property</th>
+        <th scope="col">Type</th>
+        <th scope="col">Description</th>
+        <th scope="col">ReadOnly</th>
+    </tr>
+    </thead>
+
+    <tbody>
+        {{#each model.properties}}
+            <tr>
+                <td>{{this.title}}</td>
+                <td>{{this.type}}</td>
+                <td>{{this.description}}</td>
+                <td>{{this.readOnly}}</td>
+            </tr>
+        {{/each}}
+    </tbody>
+</table>
+

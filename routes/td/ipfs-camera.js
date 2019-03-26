@@ -6,9 +6,9 @@ const ipfsCamera = require('../../sensors/IPFSCamera');
 
 router.get('/', function(req, res, next) {
     if (req.accepts('text/html')) {
-        res.render('./sensors-details/ipfs-camera', { ipfsCamera: ipfsCamera });
+        res.render('./thing-details', { model: ipfsCamera });
     }else {
-        res.send(ipfsCamera);;
+        res.send(ipfsCamera);
     }
 });
 
