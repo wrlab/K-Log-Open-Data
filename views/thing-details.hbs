@@ -1,7 +1,31 @@
-<h1>{{model.name}}</h1>
-<h3>Description</h3>
-{{model.description}}
-<h2>Properties</h2>
+<h4><a href="{{model.[@context]}}{{model.[@type]}}">{{model.name}}</a> </h4>
+<h5>Description</h5>
+<p>{{model.description}}</p>
+<h5>Security</h5>
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>Type</th>
+        <th scope="col">Security mechanism</th>
+        <th scope="col">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    {{#each model.securityDefinitions}}
+        <tr>
+            <td>{{@key}}</td>
+            <td>{{this.scheme}}</td>
+            <td>{{this.description}}</td>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>
+
+
+
+<h5>Properties</h5>
 
 <table class="table table-bordered">
     <thead>
@@ -16,7 +40,7 @@
     <tbody>
         {{#each model.properties}}
             <tr>
-                <td>{{this.title}}</td>
+                <td><a href="{{../model.[@context]}}{{this.[@type]}}">{{this.title}}</a></td>
                 <td>{{this.type}}</td>
                 <td>{{this.description}}</td>
                 <td>{{this.readOnly}}</td>
@@ -25,3 +49,24 @@
     </tbody>
 </table>
 
+<h5>Forms</h5>
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>Type</th>
+        <th scope="col">Security mechanism</th>
+        <th scope="col">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    {{#each model.securityDefinitions}}
+        <tr>
+            <td>{{@key}}</td>
+            <td>{{this.scheme}}</td>
+            <td>{{this.description}}</td>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>

@@ -21,6 +21,7 @@ const sleep = require('./routes/td/sleep');
 const smartTable = require('./routes/td/smart-table');
 const smartWatch = require('./routes/td/smart-watch');
 
+
 const app = express();
 
 // const IpfsApi = require('ipfs-api');
@@ -45,7 +46,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+app.use('/td', indexRouter);
 app.use('/api/airquality', airQualityRouterApi);
 
 app.use('/td/things', things);
@@ -58,6 +59,7 @@ app.use('/td/ipfsCamera', ipfsCamera);
 app.use('/td/sleep', sleep);
 app.use('/td/smartTable', smartTable);
 app.use('/td/smartWatch', smartWatch);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

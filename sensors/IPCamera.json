@@ -1,6 +1,6 @@
 {
   "id": "https://.../td/IPCamera",
-  "@context": "https://schema.iot.webizing.org",
+  "@context": "https://schema.iot.webizing.org/",
   "@type": ["IPCamera"],
   "name": "IPCamera Sensor",
   "names": "",
@@ -14,7 +14,7 @@
       "forms": [
         {
           "href": "there should be url for access value of this property",
-          "mediaType": "application/json"
+          "contentType": "application/json"
         }
       ],
       "readOnly": true
@@ -26,7 +26,7 @@
       "description": "user of the sensor - format: firstName+LastName ex)jonghoLee, wanhoIm",
       "forms": [{
           "href": "there should be url for access value of this property",
-          "mediaType": "application/json"
+          "contentType": "application/json"
         }],
       "readOnly": true
     },
@@ -35,7 +35,7 @@
       "type": "string",
       "title": "Address",
       "description": "building where the sensor resides - format: organization-building ex)yongjaelee-house, kist-l1, kist-l8",
-      "forms": [{"href": "there should be url for access value of this property", "mediaType": "application/json"}],
+      "forms": [{"href": "there should be url for access value of this property", "contentType": "application/json"}],
       "readOnly": true
     },
     "room": {
@@ -43,7 +43,7 @@
       "type": "string",
       "title": "Room",
       "description": "room number of the building where the sensor resides - ex) L8321",
-      "forms": [{"href": "there should be url for access value of this property", "mediaType": "application/json"}],
+      "forms": [{"href": "there should be url for access value of this property", "contentType": "application/json"}],
       "readOnly": true
     },
     "location": {
@@ -71,6 +71,22 @@
       "readOnly": true
     }
   },
+  "forms": [
+    {
+      "href": "there should be url for access value of this property",
+      "mockup" : {
+        "name": "Foobot00",
+        "user": "jonghoLee",
+        "address": "kist-l1",
+        "room": "L8321",
+        "location": "On the table",
+        "time": "2017-05-30T18:54:20+09:00",
+        "url": "www.kist.videos/1"
+      },
+      "contentType": "application/json",
+      "op": ["readallproperties"]
+    }
+  ],
   "securityDefinitions": {"nosec_sc": {"scheme": "nosec"}},
   "security": ["nosec_sc"]
 }

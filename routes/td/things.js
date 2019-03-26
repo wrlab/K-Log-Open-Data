@@ -13,8 +13,8 @@ const smartWatch = require('../../sensors/SmartWatch');
 
 
 router.get('/', function(req, res, next) {
-    const things  = [airQuality, cushion, energyApplianceMonitor, energyMonitor,
-        ipCamera, ipIPFSCamera, sleep, smartTable, smartWatch];
+    const things  = {airQuality, cushion, energyApplianceMonitor, energyMonitor,
+        ipCamera, ipIPFSCamera, sleep, smartTable, smartWatch};
 
     if (req.accepts('text/html')) {
         res.render('things', { things: things });
