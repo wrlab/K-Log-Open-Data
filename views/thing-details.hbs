@@ -1,7 +1,8 @@
-<h4><a href="{{model.[@context]}}{{model.[@type]}}">{{model.name}}</a> </h4>
-<h5>Description</h5>
+<h2><a href="{{model.[@context]}}{{model.[@type]}}">{{model.name}}</a> </h2>
+<p>Version of TD instance {{model.version.instance}}</p>
+<h3>Description</h3>
 <p>{{model.description}}</p>
-<h5>Security</h5>
+<h3>Security</h3>
 
 <table class="table table-bordered">
     <thead>
@@ -25,7 +26,7 @@
 
 
 
-<h5>Properties</h5>
+<h3>Properties</h3>
 
 <table class="table table-bordered">
     <thead>
@@ -40,7 +41,8 @@
     <tbody>
         {{#each model.properties}}
             <tr>
-                <td><a href="{{../model.[@context]}}{{this.[@type]}}">{{this.title}}</a></td>
+
+                <td><a href="{{../baseUrl}}/{{@key}}">{{this.title}}</a></td>
                 <td>{{this.type}}</td>
                 <td>{{this.description}}</td>
                 <td>{{this.readOnly}}</td>
@@ -49,23 +51,25 @@
     </tbody>
 </table>
 
-<h5>Forms</h5>
+<h3>Forms</h3>
 
 <table class="table table-bordered">
     <thead>
     <tr>
-        <th>Type</th>
-        <th scope="col">Security mechanism</th>
-        <th scope="col">Description</th>
+        <th>URL</th>
+        <th scope="col">Content Type</th>
+        <th scope="col">Operations</th>
+        <th scope="col">Access</th>
     </tr>
     </thead>
 
     <tbody>
-    {{#each model.securityDefinitions}}
+    {{#each model.forms}}
         <tr>
-            <td>{{@key}}</td>
-            <td>{{this.scheme}}</td>
-            <td>{{this.description}}</td>
+            <td>{{href}}</td>
+            <td>{{contentType}}</td>
+            <td>{{op}}</td>
+            <td>{{secure}}</td>
         </tr>
     {{/each}}
     </tbody>

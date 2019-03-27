@@ -14,7 +14,7 @@
       "forms": [
         {
           "href": "there should be url for access value of this property",
-          "contentType": "application/json"
+          "op": ["readproperty"], "contentType": "application/json"
         }
       ],
       "readOnly": true
@@ -26,7 +26,7 @@
       "description": "user of the sensor - format: firstName+LastName ex)jonghoLee, wanhoIm",
       "forms": [{
           "href": "URL",
-          "contentType": "application/json"
+          "op": ["readproperty"], "contentType": "application/json"
         }],
       "readOnly": true
     },
@@ -35,7 +35,7 @@
       "type": "string",
       "title": "Address",
       "description": "building where the sensor resides - format: organization-building ex)yongjaelee-house, kist-l1, kist-l8",
-      "forms": [{"href": "URL", "contentType": "application/json"}],
+      "forms": [{"href": "URL", "op": ["readproperty"], "contentType": "application/json"}],
       "readOnly": true
     },
     "room": {
@@ -43,7 +43,7 @@
       "@type": "schema:Text",
       "title": "Room",
       "description": "room number of the building where the sensor resides - ex) L8321",
-      "forms": [{"href": "URL", "contentType": "application/json"}],
+      "forms": [{"href": "URL", "op": ["readproperty"], "contentType": "application/json"}],
       "readOnly": true
     },
     "location": {
@@ -51,7 +51,7 @@
       "type": "string",
       "title": "Location",
       "description": "location of the sensor - format: free",
-      "forms": [{"href": "URL", "contentType": "application/json"}],
+      "forms": [{"href": "URL", "op": ["readproperty"], "contentType": "application/json"}],
       "readOnly": true
     },
     "time": {
@@ -59,7 +59,7 @@
       "type": "string",
       "title": "Time",
       "description": "time at which the data measurement was made - ex)\"2017-05-30T18:54:20+09:00\"",
-      "forms": [{"href": "URL", "contentType": "application/json"}],
+      "forms": [{"href": "URL", "op": ["readproperty"], "contentType": "application/json"}],
       "readOnly": true
     },
     "startDate": {
@@ -67,7 +67,7 @@
       "type": "string",
       "title": "Start Date",
       "description": "start time ex)2017-09-10T00:00:00+09:00",
-      "forms": [{"href": "URL", "contentType": "application/json"}],
+      "forms": [{"href": "URL", "op": ["readproperty"], "contentType": "application/json"}],
       "readOnly": true
     },
     "endDate": {
@@ -75,7 +75,7 @@
       "type": "string",
       "title": "End Date",
       "description": "sleep end time ex)2017-09-10T06:30:00+09:00",
-      "forms": [{"href": "URL", "contentType": "application/json"}],
+      "forms": [{"href": "URL", "op": ["readproperty"], "contentType": "application/json"}],
       "readOnly": true
     },
     "stepCount": {
@@ -83,7 +83,7 @@
       "type": "integer",
       "title": "Step Count",
       "description": "걸음 수",
-      "forms": [{"href": "URL", "contentType": "application/json"}],
+      "forms": [{"href": "URL", "op": ["readproperty"], "contentType": "application/json"}],
       "readOnly": true
     },
     "heartRate": {
@@ -91,7 +91,7 @@
       "type": "integer",
       "title": "Heart Rate",
       "description": "심박수 - unit: count/min",
-      "forms": [{"href": "URL", "contentType": "application/json"}],
+      "forms": [{"href": "URL", "op": ["readproperty"], "contentType": "application/json"}],
       "readOnly": true
     },
     "exerciseTime": {
@@ -106,7 +106,7 @@
       "type": "number",
       "title": "Stand Hour",
       "description": "일어선 시간 - 1: 1시간, 0: 0시간",
-      "forms": [{"href": "URL", "contentType": "application/json"}],
+      "forms": [{"href": "URL", "op": ["readproperty"], "contentType": "application/json"}],
       "readOnly": true
     }
   },
@@ -131,6 +131,7 @@
       "op": ["readallproperties"]
     }
   ],
-  "securityDefinitions": {"nosec_sc": {"scheme": "nosec"}},
-  "security": ["nosec_sc"]
+  "securityDefinitions": {"nosec_sc": {"description" : "no security","scheme": "nosec"}},
+  "security": ["nosec_sc"],
+  "version": {"instance":"0.0.1" }
 }

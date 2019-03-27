@@ -15,8 +15,8 @@
       "forms": [
         {
           "href": "there should be url for access value of this property",
-          "contentType": "application/json"
-        }
+          "op": ["readproperty"],"contentType": "application/json"
+         }
       ],
       "readOnly": true
     },
@@ -27,8 +27,8 @@
       "description": "user of the sensor - format: firstName+LastName ex)jonghoLee, wanhoIm",
       "forms": [{
           "href": "there should be url for access value of this property",
-          "contentType": "application/json"
-        }],
+          "op": ["readproperty"],"contentType": "application/json"
+         }],
       "readOnly": true
     },
     "address": {
@@ -36,7 +36,7 @@
       "type": "string",
       "title": "Address",
       "description": "building where the sensor resides - format: organization-building ex)yongjaelee-house, kist-l1, kist-l8",
-      "forms": [{"href": "there should be url for access value of this property", "contentType": "application/json"}],
+      "forms": [{"href": "there should be url for access value of this property", "op": ["readproperty"],"contentType": "application/json"} ],
       "readOnly": true
     },
     "room": {
@@ -44,7 +44,7 @@
       "type": "string",
       "title": "Room",
       "description": "room number of the building where the sensor resides - ex) L8321",
-      "forms": [{"href": "there should be url for access value of this property", "contentType": "application/json"}],
+      "forms": [{"href": "there should be url for access value of this property", "op": ["readproperty"],"contentType": "application/json"} ],
       "readOnly": true
     },
     "location": {
@@ -52,7 +52,7 @@
       "type": "string",
       "title": "Location",
       "description": "location of the sensor - format: free",
-      "forms": [{"href": "there should be url for access value of this property", "contentType": "application/json"}],
+      "forms": [{"href": "there should be url for access value of this property", "op": ["readproperty"],"contentType": "application/json"} ],
       "readOnly": true
     },
     "time": {
@@ -60,7 +60,7 @@
       "type": "string",
       "title": "Time",
       "description": "time at which the data measurement was made - ex)\"2017-05-30T18:54:20+09:00\"",
-      "forms": [{"href": "there should be url for access value of this property", "contentType": "application/json"}],
+      "forms": [{"href": "there should be url for access value of this property", "op": ["readproperty"],"contentType": "application/json"} ],
       "readOnly": true
     },
     "pressure": {
@@ -68,7 +68,7 @@
       "type": "number",
       "title": "Pressure",
       "description": "unit is to be defined",
-      "forms": [{"href": "there should be url for access value of this property", "contentType": "application/json"}],
+      "forms": [{"href": "there should be url for access value of this property", "op": ["readproperty"],"contentType": "application/json"} ],
       "readOnly": true
     },
     "temp": {
@@ -76,7 +76,7 @@
       "type": "number",
       "title": "Temp",
       "description": "temperature - unit: Celsius(℃)",
-      "forms": [{"href": "there should be url for access value of this property", "contentType": "application/json"}],
+      "forms": [{"href": "there should be url for access value of this property", "op": ["readproperty"],"contentType": "application/json"} ],
       "readOnly": true
     },
     "status": {
@@ -84,7 +84,7 @@
       "type": "number",
       "title": "Status",
       "description": "pm2.5 - unit: ㎍/㎥",
-      "forms": [{"href": "there should be url for access value of this property", "contentType": "application/json"}],
+      "forms": [{"href": "there should be url for access value of this property", "op": ["readproperty"],"contentType": "application/json"} ],
       "readOnly": true
     }
   },
@@ -106,6 +106,7 @@
       "op": ["readallproperties"]
     }
   ],
-  "securityDefinitions": {"nosec_sc": {"scheme": "nosec"}},
-  "security": ["nosec_sc"]
+  "securityDefinitions": {"nosec_sc": {"description" : "no security","scheme": "nosec"}},
+  "security": ["nosec_sc"],
+  "version": {"instance":"0.0.1" }
 }

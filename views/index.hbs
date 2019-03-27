@@ -1,2 +1,13 @@
+<h1>Webizing Web Thing Model</h1>
+<p>Version 1.0.0</p>
+
 <h2>Things</h2>
-<a href="/td/things">Properties</a>
+
+{{#each things}}
+    <p>
+    <a href="/td/{{[@type]}}">{{name}}</a>
+    <br>
+
+    {{description}}
+    </p>
+{{/each}}

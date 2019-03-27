@@ -10,7 +10,6 @@ const indexRouter = require('./routes/index');
 const airQualityRouterApi = require('./routes/api/air-quality');
 
 // Thing Description Routes
-const things = require('./routes/td/things');
 const airQuality= require('./routes/td/air-quality');
 const cushion = require('./routes/td/cushion');
 const energyApplianceMonitor = require('./routes/td/energy-appliance-monitor');
@@ -49,7 +48,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/td', indexRouter);
 app.use('/api/airquality', airQualityRouterApi);
 
-app.use('/td/things', things);
 app.use('/td/airquality', airQuality);
 app.use('/td/cushion', cushion);
 app.use('/td/energyApplianceMonitor', energyApplianceMonitor);
