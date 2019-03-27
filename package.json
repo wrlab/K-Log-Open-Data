@@ -3,16 +3,18 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "dev:server": "nodemon ./bin/www"
   },
   "dependencies": {
     "bootstrap": "^4.3.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "~4.16.0",
+    "express-graphql": "^0.7.1",
     "hbs": "~4.0.1",
     "http-errors": "~1.6.2",
-    "ipfs": "^0.33.1",
+    "ipfs": "^0.34.4",
     "ipfs-api": "^26.1.2",
     "ipfs-http-client": "^30.1.0",
     "morgan": "~1.9.0",
