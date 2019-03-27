@@ -24,6 +24,7 @@ const smartWatch = require('./routes/td/smart-watch');
 
 const app = express();
 
+// create OrbitDB database
 // const IpfsApi = require('ipfs-api');
 // const OrbitDB = require('orbit-db');
 //
