@@ -5,6 +5,9 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+const schema = require('./graphql/schema');
+const root = require('./graphql/api');
+
 const indexRouter = require('./routes/index');
 
 // Api for orbit db
@@ -20,7 +23,6 @@ const ipfsCamera = require('./routes/td/ipfs-camera');
 const sleep = require('./routes/td/sleep');
 const smartTable = require('./routes/td/smart-table');
 const smartWatch = require('./routes/td/smart-watch');
-
 
 const app = express();
 
@@ -48,8 +50,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/graphql', graphqlHTTP({
-  schema: {},
-  graphiql: true
+  schema: schema,
+  rootValue: root,
+  graphiql: true,
 }));
 
 app.use('/td', indexRouter);
