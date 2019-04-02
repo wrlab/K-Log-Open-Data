@@ -1,0 +1,24 @@
+{
+  "@context": {
+    "rdf": "https://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "https://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+    "webiot": "https://schema.iot.webizing.org/",
+    "xsd": "https://www.w3.org/2001/XMLSchema#"
+  },
+  "@id": "webiot:hash",
+  "@type": "rdf:Property",
+  "rdfs:comment": "hash to the video file in the IPFS system",
+  "rdfs:label": "hash",
+  "schema:domainIncludes": [
+    {
+      "@id": "webiot:IPFSCamera"
+    }
+  ],
+  "schema:rangeIncludes": {
+    "@id": "schema:Text"
+  },
+  "schema:sameAs": {
+    "@id": "webiot:hash"
+  }
+}

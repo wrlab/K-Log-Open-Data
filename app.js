@@ -5,6 +5,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+
 const schema = require('./graphql/schema');
 const root = require('./graphql/api');
 
@@ -23,6 +24,7 @@ const ipfsCamera = require('./routes/td/ipfs-camera');
 const sleep = require('./routes/td/sleep');
 const smartTable = require('./routes/td/smart-table');
 const smartWatch = require('./routes/td/smart-watch');
+const webizingOntology = require('./middleware/webizing-ontology');
 
 const app = express();
 
@@ -67,6 +69,9 @@ app.use('/td/ipfsCamera', ipfsCamera);
 app.use('/td/sleep', sleep);
 app.use('/td/smartTable', smartTable);
 app.use('/td/smartWatch', smartWatch);
+
+
+app.use('/', webizingOntology());
 
 
 // catch 404 and forward to error handler
