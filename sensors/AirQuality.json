@@ -13,7 +13,7 @@
       "description": "name of the sensor - format: firstName+LastName ex)jonghoLee, wanhoIm",
       "forms": [
         {
-          "href": "there should be url for access value of this property",
+          "href": "http://localhost:3000/graphql?query={ airQuality {name}}",
           "contentType": "application/json",
           "op": ["readproperty"]
         }
@@ -27,7 +27,7 @@
       "description": "user of the sensor - format: firstName+LastName ex)jonghoLee, wanhoIm",
       "forms": [
         {
-          "href": "there should be url for access value of this property",
+          "href": "http://localhost:3000/graphql?query={ airQuality {user}}",
           "contentType": "application/json",
           "op": ["readproperty"]
         }
@@ -41,7 +41,7 @@
       "description": "building where the sensor resides - format: organization-building ex)yongjaelee-house, kist-l1, kist-l8",
       "forms": [
         {
-          "href": "there should be url for access value of this property",
+          "href": "http://localhost:3000/graphql?query={ airQuality {address}}",
           "contentType": "application/json",
           "op": ["readproperty"]
         }
@@ -55,7 +55,7 @@
       "description": "room number of the building where the sensor resides - ex) L8321",
       "forms": [
         {
-          "href": "there should be url for access value of this property",
+          "href": "http://localhost:3000/graphql?query={ airQuality {room}}",
           "contentType": "application/json",
           "op": ["readproperty"]
         }
@@ -69,7 +69,7 @@
       "description": "location of the sensor - format: free",
       "forms": [
         {
-          "href": "there should be url for access value of this property",
+          "href": "http://localhost:3000/graphql?query={ airQuality {location}}",
           "contentType": "application/json",
           "op": ["readproperty"]
         }
@@ -83,7 +83,7 @@
       "description": "time at which the data measurement was made - ex)\"2017-05-30T18:54:20+09:00\"",
       "forms": [
         {
-          "href": "there should be url for access value of this property",
+          "href": "http://localhost:3000/graphql?query={ airQuality {time}}",
           "contentType": "application/json",
           "op": ["readproperty"]
         }
@@ -97,7 +97,7 @@
       "description": "습도 - unit: %",
       "forms": [
         {
-          "href": "there should be url for access value of this property",
+          "href": "http://localhost:3000/graphql?query={ airQuality {humidity}}",
           "contentType": "application/json",
           "op": ["readproperty"]
         }
@@ -111,7 +111,7 @@
       "description": "temperature - unit: Celsius(℃)",
       "forms": [
         {
-          "href": "there should be url for access value of this property",
+          "href": "http://localhost:3000/graphql?query={ airQuality {temp}}",
           "contentType": "application/json",
           "op": ["readproperty"]
         }
@@ -125,7 +125,7 @@
       "description": "pm2.5 - unit: ㎍/㎥",
       "forms": [
         {
-          "href": "there should be url for access value of this property",
+          "href": "http://localhost:3000/graphql?query={ airQuality {particle}}",
           "contentType": "application/json",
           "op": ["readproperty"]
         }
@@ -139,7 +139,7 @@
       "description": "이산화탄소 - unit: ppm",
       "forms": [
         {
-          "href": "there should be url for access value of this property",
+          "href": "http://localhost:3000/graphql?query={ airQuality {co2}}",
           "contentType": "application/json",
           "op": ["readproperty"]
         }
@@ -153,7 +153,7 @@
       "description": "휘발성 유기 화합물 - unit: ppb",
       "forms": [
         {
-          "href": "there should be url for access value of this property",
+          "href": "http://localhost:3000/graphql?query={ airQuality {voc}}",
           "contentType": "application/json",
           "op": ["readproperty"]
         }
@@ -167,7 +167,7 @@
       "description": "미세먼지 - unit: TBD",
       "forms": [
         {
-          "href": "there should be url for access value of this property",
+          "href": "http://localhost:3000/graphql?query={ airQuality {pollution}}",
           "contentType": "application/json",
           "op": ["readproperty"]
         }
@@ -177,7 +177,7 @@
   },
   "forms": [
     {
-      "href": "there should be url for access value of this property",
+      "href": "http://localhost:3000/graphql?query={ airQuality {name user   address    room   location    time    humidity    temp   particle   co2    voc    pollution  }}",
       "contentType": "application/json",
       "op": ["readallproperties"]
     }

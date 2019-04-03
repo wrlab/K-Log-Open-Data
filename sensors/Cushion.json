@@ -15,7 +15,8 @@
       "forms": [
         {
           "href": "there should be url for access value of this property",
-          "op": ["readproperty"],"contentType": "application/json"
+          "op": ["readproperty"],
+          "contentType": "application/json"
          }
       ],
       "readOnly": true
@@ -27,7 +28,8 @@
       "description": "user of the sensor - format: firstName+LastName ex)jonghoLee, wanhoIm",
       "forms": [{
           "href": "there should be url for access value of this property",
-          "op": ["readproperty"],"contentType": "application/json"
+          "op": ["readproperty"],
+          "contentType": "application/json"
          }],
       "readOnly": true
     },
@@ -36,7 +38,11 @@
       "type": "string",
       "title": "Address",
       "description": "building where the sensor resides - format: organization-building ex)yongjaelee-house, kist-l1, kist-l8",
-      "forms": [{"href": "there should be url for access value of this property", "op": ["readproperty"],"contentType": "application/json"} ],
+      "forms": [{
+        "href": "there should be url for access value of this property",
+        "op": ["readproperty"],
+        "contentType": "application/json"
+      }],
       "readOnly": true
     },
     "room": {

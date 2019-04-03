@@ -13,7 +13,7 @@
       "description": "name of the sensor - format: firstName+LastName ex)jonghoLee, wanhoIm",
       "forms": [
         {
-          "href": "there should be url for access value of this property",
+          "href": "http://localhost:3000/graphql?query={ sleep {name}}",
           "op": ["readproperty"], "contentType": "application/json"
         }
       ],
@@ -25,7 +25,7 @@
       "title": "User",
       "description": "user of the sensor - format: firstName+LastName ex)jonghoLee, wanhoIm",
       "forms": [{
-          "href": "there should be url for access value of this property",
+          "href": "http://localhost:3000/graphql?query={ sleep {user}}",
           "op": ["readproperty"], "contentType": "application/json"
         }],
       "readOnly": true
@@ -35,7 +35,7 @@
       "type": "string",
       "title": "Address",
       "description": "building where the sensor resides - format: organization-building ex)yongjaelee-house, kist-l1, kist-l8",
-      "forms": [{"href": "there should be url for access value of this property", "op": ["readproperty"], "contentType": "application/json"}],
+      "forms": [{"href": "http://localhost:3000/graphql?query={ sleep { address}}", "op": ["readproperty"], "contentType": "application/json"}],
       "readOnly": true
     },
     "room": {
@@ -43,7 +43,7 @@
       "type": "string",
       "title": "Room",
       "description": "room number of the building where the sensor resides - ex) L8321",
-      "forms": [{"href": "there should be url for access value of this property", "op": ["readproperty"], "contentType": "application/json"}],
+      "forms": [{"href": "http://localhost:3000/graphql?query={ sleep {room }}", "op": ["readproperty"], "contentType": "application/json"}],
       "readOnly": true
     },
     "location": {
@@ -51,7 +51,7 @@
       "type": "string",
       "title": "Location",
       "description": "location of the sensor - format: free",
-      "forms": [{"href": "there should be url for access value of this property", "op": ["readproperty"], "contentType": "application/json"}],
+      "forms": [{"href": "http://localhost:3000/graphql?query={ sleep { location }}", "op": ["readproperty"], "contentType": "application/json"}],
       "readOnly": true
     },
     "time": {
@@ -59,7 +59,7 @@
       "type": "string",
       "title": "Time",
       "description": "time at which the data measurement was made - ex)\"2017-05-30T18:54:20+09:00\"",
-      "forms": [{"href": "there should be url for access value of this property", "op": ["readproperty"], "contentType": "application/json"}],
+      "forms": [{"href": "http://localhost:3000/graphql?query={ sleep {time }}", "op": ["readproperty"], "contentType": "application/json"}],
       "readOnly": true
     },
     "startDate": {
@@ -67,7 +67,7 @@
       "type": "string",
       "title": "StartDate",
       "description": "start time ex)2017-09-10T00:00:00+09:00",
-      "forms": [{"href": "there should be url for access value of this property", "op": ["readproperty"], "contentType": "application/json"}],
+      "forms": [{"href": "http://localhost:3000/graphql?query={ sleep {startDate}}", "op": ["readproperty"], "contentType": "application/json"}],
       "readOnly": true
     },
     "endDate": {
@@ -75,7 +75,7 @@
       "type": "string",
       "title": "EndDate",
       "description": "sleep end time ex)2017-09-10T06:30:00+09:00",
-      "forms": [{"href": "there should be url for access value of this property", "op": ["readproperty"], "contentType": "application/json"}],
+      "forms": [{"href": "http://localhost:3000/graphql?query={ sleep { endDate }}", "op": ["readproperty"], "contentType": "application/json"}],
       "readOnly": true
     },
     "totalSleep": {
@@ -83,13 +83,13 @@
       "type": "number",
       "title": "TotalSleep",
       "description": "totalSleep time - unit: minute",
-      "forms": [{"href": "there should be url for access value of this property", "op": ["readproperty"], "contentType": "application/json"}],
+      "forms": [{"href": "http://localhost:3000/graphql?query={ sleep {totalSleep }}", "op": ["readproperty"], "contentType": "application/json"}],
       "readOnly": true
     }
   },
   "forms": [
     {
-      "href": "there should be url for access value of this property",
+      "href": "http://localhost:3000/graphql?query={ sleep {name user   address    room   location    time    startDate   endDate totalSleep }}",
       "contentType": "application/json",
       "op": ["readallproperties"]
     }

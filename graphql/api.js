@@ -74,8 +74,8 @@ const root = {
             "room": "L8321",
             "location": "On the table",
             "time": "2017-05-30T18:54:20+09:00",
-            "foodList": "[kimchi, rice, driedSeaWeed]",
-            "caloryList": "[40kcal, 250kcal, 30kcal]",
+            "foodList": ["kimchi", "rice", "driedSeaWeed"],
+            "caloryList": ["40kcal", "250kcal", "30kcal"],
             "snapShot": "https://schema.iot.webizing.org/pictures/20180826"
         }
     },

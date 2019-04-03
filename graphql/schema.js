@@ -36,7 +36,7 @@ const schema = buildSchema(`
     room: String!,
     location: String!,
     time: String!,
-    applianceId: Float!,
+    applianceId: String!,
     activePower: Float!
   },
   
@@ -82,8 +82,8 @@ const schema = buildSchema(`
     room: String!,
     location: String!,
     time: String!,
-    startDate: Float!,
-    endDate: Float!, 
+    startDate: String!,
+    endDate: String!, 
     stepCount: Int!, 
     heartRate: Int!, 
     exerciseTime: Float!, 
