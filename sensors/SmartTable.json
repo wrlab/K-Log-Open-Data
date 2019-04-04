@@ -4,7 +4,7 @@
   "@type": ["SmartTable"],
   "name": "SmartTable Sensor",
   "names": "",
-  "description" : "음식 리스트, 음식 칼로리, 사진 http://localhost:3000/graphql?query={ smartTable {name user   address    room   location    time    foodList   caloryList snapShot }} 로깅",
+  "description" : "음식 리스트, 음식 칼로리, 사진 로깅",
   "properties": {
     "name": {
       "@type": "name",
