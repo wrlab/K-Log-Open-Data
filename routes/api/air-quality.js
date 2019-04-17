@@ -7,10 +7,10 @@ const uuidv1 = require('uuid/v1'); // based on timestamp
 const IpfsApi = require('ipfs-api');
 const OrbitDB = require('orbit-db');
 
-const ipfs = IpfsApi('localhost', '5001');
+const ipfs = IpfsApi('/ip4/127.0.0.1/tcp/5002');
 const orbitdb = new OrbitDB(ipfs);
-
-const DB_ADDRESS = '/orbitdb/Qmb6deDiTCXHwQVT6dEa9vPFwVQygquDPNUtYgb5Vb6kkN/webizing-orbitdb-test';
+///ip4/127.0.0.1/tcp/4002/ipfs/QmNQj3fEk4JwKMQDudC5SFfoPGSyZnyjJPzngnXuH3YJGh
+const DB_ADDRESS = '/orbitdb/QmUppFtbPfmrMkSWWFCrh4cSucXfUtoHpfKZjQ26Xm9hMT/foobot';
 const CATEGORY = "AirQuality";
 
 /* Get all records with airQuality category. */

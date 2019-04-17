@@ -15,7 +15,6 @@
         {
           "href": "http://localhost:3000/graphql?query={ airQuality {name}}",
           "contentType": "application/json",
-
           "op": ["readproperty"]
         }
       ],

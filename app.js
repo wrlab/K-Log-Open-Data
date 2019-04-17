@@ -5,6 +5,8 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+const db = require('./db');
+const config = require('./config');
 
 const schema = require('./graphql/schema');
 const root = require('./graphql/api');
@@ -12,7 +14,7 @@ const root = require('./graphql/api');
 const indexRouter = require('./routes/index');
 
 // Api for orbit db
-const airQualityRouterApi = require('./routes/api/air-quality');
+// const airQualityRouterApi = require('./routes/api/air-quality');
 
 // Thing Description Routes
 const airQuality= require('./routes/td/air-quality');
@@ -27,19 +29,6 @@ const smartWatch = require('./routes/td/smart-watch');
 const webizingOntology = require('./middleware/webizing-ontology');
 
 const app = express();
-
-// create OrbitDB database
-// const IpfsApi = require('ipfs-api');
-// const OrbitDB = require('orbit-db');
-//
-// const ipfs = IpfsApi('/ip4/127.0.0.1/tcp/5001');
-// const orbitdb = new OrbitDB(ipfs);
-//
-// orbitdb.create("webizing-orbitdb-test", "docstore").then(db => {
-//   console.log(db.address.toString());
-//   console.log(db.type);
-// });
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -58,7 +47,18 @@ app.use('/graphql', graphqlHTTP({
 }));
 
 app.use('/td', indexRouter);
-app.use('/api/airquality', airQualityRouterApi);
+// app.use('/api/airquality', airQualityRouterApi);
+
+// catch 404 and forward to error handler
+app.use('/test',async function(req, res, next) {
+  const orbitDB = await db.orbitDBStore.getDataStore();
+
+  await orbitDB.load();
+
+  const data = await orbitDB.get('');
+
+  res.send(data);
+});
 
 app.use('/td/airquality', airQuality);
 app.use('/td/cushion', cushion);
@@ -88,6 +88,12 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+app.listen(3000, async () => {
+  console.log('Server running on port 3000');
+  await db.orbitDBStore.startDB(config.db_address);
+  console.log(`IPFS is started!`)
 });
 
 module.exports = app;

@@ -3,6 +3,8 @@ logs
 *.log
 .idea
 orbitdb
+ipfs-webizing-td
+db-http-api-client
 
 # Runtime data
 pids
