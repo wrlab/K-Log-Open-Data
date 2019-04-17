@@ -70,9 +70,7 @@ app.use('/td/sleep', sleep);
 app.use('/td/smartTable', smartTable);
 app.use('/td/smartWatch', smartWatch);
 
-
 app.use('/', webizingOntology());
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
