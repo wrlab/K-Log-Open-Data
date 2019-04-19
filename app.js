@@ -56,7 +56,7 @@ app.use('/test',async function(req, res, next) {
   await orbitDB.load();
 
   const data = await orbitDB.get('');
-
+  console.log(`Data length: ${data.length}`);
   res.send(data);
 });
 

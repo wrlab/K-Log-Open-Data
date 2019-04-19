@@ -1,4 +1,4 @@
-const ORBIT_DB_ADDRESS = '/orbitdb/zdpuAvMans9oABhVaBfBeUiGG4exKiaBrA7wHzxq7AY2aioxM/peers-time';
+const ORBIT_DB_ADDRESS = '/orbitdb/zdpuAxH69f5LLYhmam7D3tpKPYqod3Qj7wy2W26dtbKD7ByoL/webizing-td';
 const ORBIT_DB_DIRECTORY = 'db-http-api-client';
 const ORBIT_DB_IDENTITY_NAME = 'peer-http-api-td-client';
 const IPFS_CLI_ADDRESS = '/ip4/127.0.0.1/tcp/5002/http';
