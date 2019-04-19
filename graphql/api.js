@@ -1,45 +1,70 @@
+const db = require('../db');
+
 // The root provides a resolver function for each API endpoint
 const root = {
     airQuality: async () => {
-        return {
-            "name": "Foobot00",
-            "user": "jonghoLee",
-            "address": "kist-l1",
-            "room": "L8321",
-            "location": "On the table",
-            "time": "2017-05-30T18:54:20+09:00",
-            "humidity": "34.2",
-            "temp": "28.5",
-            "particle": "1.3",
-            "co2": "2.4",
-            "voc": "1.3",
-            "pollution": "23.6"
-        }
+        const orbitDB = await db.orbitDBStore.getDataStore();
+
+        await orbitDB.load();
+
+        const data = await orbitDB.query((doc) => doc['_index'] === 'airquality');
+        console.log(`Data length: ${data.length}`);
+
+        return data[0]
+        // return {
+        //     "name": "Foobot00",
+        //     "user": "jonghoLee",
+        //     "address": "kist-l1",
+        //     "room": "L8321",
+        //     "location": "On the table",
+        //     "time": "2017-05-30T18:54:20+09:00",
+        //     "humidity": "34.2",
+        //     "temp": "28.5",
+        //     "particle": "1.3",
+        //     "co2": "2.4",
+        //     "voc": "1.3",
+        //     "pollution": "23.6"
+        // }
     },
     cushion: async () => {
-        return {
-            "name": "Foobot00",
-            "user": "jonghoLee",
-            "address": "kist-l1",
-            "room": "L8321",
-            "location": "On the chair",
-            "time": "2017-05-30T18:54:20+09:00",
-            "pressure": "79.2",
-            "temp": "28.5",
-            "status": "0"
-        }
+        const orbitDB = await db.orbitDBStore.getDataStore();
+
+        await orbitDB.load();
+
+        const data = await orbitDB.query((doc) => doc['_index'] === 'cushion');
+        console.log(`Data length: ${data.length}`);
+
+        return data[0]
+        // return {
+        //     "name": "Foobot00",
+        //     "user": "jonghoLee",
+        //     "address": "kist-l1",
+        //     "room": "L8321",
+        //     "location": "On the chair",
+        //     "time": "2017-05-30T18:54:20+09:00",
+        //     "pressure": "79.2",
+        //     "temp": "28.5",
+        //     "status": "0"
+        // }
     },
     energyApplianceMonitor: async () => {
-        return {
-            "name": "Foobot00",
-            "user": "jonghoLee",
-            "address": "kist-l1",
-            "room": "L8321",
-            "location": "On the table",
-            "time": "2017-05-30T18:54:20+09:00",
-            "applianceId": "W983MF",
-            "activePower": "2030.03"
-        }
+        const orbitDB = await db.orbitDBStore.getDataStore();
+
+        await orbitDB.load();
+
+        const data = await orbitDB.query((doc) => doc['_index'] === 'energymonitor');
+
+        return data[0]
+        // return {
+        //     "name": "Foobot00",
+        //     "user": "jonghoLee",
+        //     "address": "kist-l1",
+        //     "room": "L8321",
+        //     "location": "On the table",
+        //     "time": "2017-05-30T18:54:20+09:00",
+        //     "applianceId": "W983MF",
+        //     "activePower": "2030.03"
+        // }
     },
     energyMonitor: async () => {
         return {
