@@ -113,9 +113,15 @@ const schema = buildSchema(`
  
   type Query {
     airQuality: AirQuality,
+    airQualityList: [AirQuality],
+    
     cushion: Cushion,
-    energyApplianceMonitor: EnergyApplianceMonitor,
+    cushionList: [Cushion],
+    
     energyMonitor: EnergyMonitor,
+    energyMonitorList: [EnergyMonitor],
+    
+    energyApplianceMonitor: EnergyApplianceMonitor,
     sleep: Sleep,
     smartTable: SmartTable,
     smartWatch: SmartWatch,

@@ -11,20 +11,16 @@ const root = {
         console.log(`Data length: ${data.length}`);
 
         return data[0]
-        // return {
-        //     "name": "Foobot00",
-        //     "user": "jonghoLee",
-        //     "address": "kist-l1",
-        //     "room": "L8321",
-        //     "location": "On the table",
-        //     "time": "2017-05-30T18:54:20+09:00",
-        //     "humidity": "34.2",
-        //     "temp": "28.5",
-        //     "particle": "1.3",
-        //     "co2": "2.4",
-        //     "voc": "1.3",
-        //     "pollution": "23.6"
-        // }
+    },
+    airQualityList: async () => {
+        const orbitDB = await db.orbitDBStore.getDataStore();
+
+        await orbitDB.load();
+
+        const data = await orbitDB.query((doc) => doc['_index'] === 'airquality');
+        console.log(`Data length: ${data.length}`);
+
+        return data
     },
     cushion: async () => {
         const orbitDB = await db.orbitDBStore.getDataStore();
@@ -35,38 +31,38 @@ const root = {
         console.log(`Data length: ${data.length}`);
 
         return data[0]
-        // return {
-        //     "name": "Foobot00",
-        //     "user": "jonghoLee",
-        //     "address": "kist-l1",
-        //     "room": "L8321",
-        //     "location": "On the chair",
-        //     "time": "2017-05-30T18:54:20+09:00",
-        //     "pressure": "79.2",
-        //     "temp": "28.5",
-        //     "status": "0"
-        // }
     },
-    energyApplianceMonitor: async () => {
+    cushionList: async () => {
+        const orbitDB = await db.orbitDBStore.getDataStore();
+
+        await orbitDB.load();
+
+        const data = await orbitDB.query((doc) => doc['_index'] === 'cushion');
+        console.log(`Data length: ${data.length}`);
+
+        return data
+    },
+
+    energyMonitor: async () => {
+        const orbitDB = await db.orbitDBStore.getDataStore();
+
+        await orbitDB.load();
+
+        const data = await orbitDB.query((doc) => doc['_index'] === 'energymonitor');
+        console.log(`Data length: ${data.length}`);
+
+        return data[0]
+    },
+    energyMonitorList: async () => {
         const orbitDB = await db.orbitDBStore.getDataStore();
 
         await orbitDB.load();
 
         const data = await orbitDB.query((doc) => doc['_index'] === 'energymonitor');
 
-        return data[0]
-        // return {
-        //     "name": "Foobot00",
-        //     "user": "jonghoLee",
-        //     "address": "kist-l1",
-        //     "room": "L8321",
-        //     "location": "On the table",
-        //     "time": "2017-05-30T18:54:20+09:00",
-        //     "applianceId": "W983MF",
-        //     "activePower": "2030.03"
-        // }
+        return data
     },
-    energyMonitor: async () => {
+    energyApplianceMonitor: async () => {
         return {
             "name": "Foobot00",
             "user": "jonghoLee",
@@ -74,8 +70,8 @@ const root = {
             "room": "L8321",
             "location": "On the table",
             "time": "2017-05-30T18:54:20+09:00",
-            "consumption": "230.2",
-            "alwaysOn": "45.39"
+            "applianceId": "W983MF",
+            "activePower": "2030.03"
         }
     },
     sleep: async () => {
