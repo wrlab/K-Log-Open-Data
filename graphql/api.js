@@ -100,6 +100,10 @@ const root = {
         const data = await orbitDB.query((doc) => doc['_index'] === 'energymonitor');
         console.log(`Data length: ${data.length}`);
 
+        data.sort((a,b) => {
+            return new Date(b.time) - new Date(a.time)
+        });
+
         return data[0]
     },
     energyMonitorList: async () => {

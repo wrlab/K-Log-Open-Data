@@ -123,8 +123,7 @@ const schema = buildSchema(`
    
   type Query {
     airQuality(names: [String]): [AirQuality],
-    airQualityList: [AirQuality],
-    airQualityBy (name: String, orderBy: OrderBy): [AirQuality],
+    airQualityList(name: String, orderBy: OrderBy): [AirQuality],
     
     cushion: Cushion,
     cushionList: [Cushion],
