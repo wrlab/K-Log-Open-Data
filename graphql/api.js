@@ -106,12 +106,18 @@ const root = {
 
         return data[0]
     },
-    energyMonitorList: async () => {
+    energyMonitorList: async ({orderBy}) => {
         const orbitDB = await db.orbitDBStore.getDataStore();
 
         await orbitDB.load();
 
         const data = await orbitDB.query((doc) => doc['_index'] === 'energymonitor');
+
+        if(orderBy === "TIME") {
+            data.sort((a,b) => {
+                return new Date(b.time) - new Date(a.time)
+            })
+        }
 
         return data
     },
