@@ -129,7 +129,7 @@ const schema = buildSchema(`
     cushionList: [Cushion],
     
     energyMonitor: EnergyMonitor,
-    energyMonitorList: [EnergyMonitor],
+    energyMonitorList(orderBy: OrderBy): [EnergyMonitor],
     
     energyApplianceMonitor: EnergyApplianceMonitor,
     sleep: Sleep,
