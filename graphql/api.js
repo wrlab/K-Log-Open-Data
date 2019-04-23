@@ -2,22 +2,71 @@ const db = require('../db');
 
 // The root provides a resolver function for each API endpoint
 const root = {
-    airQuality: async () => {
+    airQuality: async ({names}) => {
         const orbitDB = await db.orbitDBStore.getDataStore();
 
         await orbitDB.load();
 
         const data = await orbitDB.query((doc) => doc['_index'] === 'airquality');
-        console.log(`Data length: ${data.length}`);
 
-        return data[0]
+        let output = [];
+        let uniqueAirQualityNames = [];
+
+        if (names && names.length) {
+            uniqueAirQualityNames = names;
+        } else {
+            const map = new Map();
+            for (const item of data) {
+                if(!map.has(item.name)){
+                    map.set(item.name, true);    // set any value to Map
+                    uniqueAirQualityNames.push(item.name);
+                }
+            }
+        }
+
+        for (let i = 0; i < uniqueAirQualityNames.length; i++) {
+            const filteredData = data.filter(item => item.name === uniqueAirQualityNames[i]);
+
+            filteredData.sort((a,b) => {
+                return new Date(b.time) - new Date(a.time)
+            });
+
+            output.push({...filteredData[0]})
+        }
+
+        return output
     },
-    airQualityList: async () => {
+
+    airQualityList: async ({names, orderBy}) => {
         const orbitDB = await db.orbitDBStore.getDataStore();
 
         await orbitDB.load();
 
-        const data = await orbitDB.query((doc) => doc['_index'] === 'airquality');
+        let data = await orbitDB.query((doc) => doc['_index'] === 'airquality');
+
+        let uniqueAirQualityNames = [];
+
+        if (names && names.length) {
+            uniqueAirQualityNames = names;
+        } else {
+            const map = new Map();
+            for (const item of data) {
+                if(!map.has(item.name)){
+                    map.set(item.name, true);    // set any value to Map
+                    uniqueAirQualityNames.push(item.name);
+                }
+            }
+        }
+        for (let i = 0; i < uniqueAirQualityNames.length; i++) {
+            data = data.filter((data) => data.name === uniqueAirQualityNames[i]);
+        }
+
+        if(orderBy === "TIME") {
+            data.sort((a,b) => {
+                return new Date(b.time) - new Date(a.time)
+            })
+        }
+
         console.log(`Data length: ${data.length}`);
 
         return data

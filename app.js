@@ -91,7 +91,10 @@ app.use(function(err, req, res, next) {
 app.listen(3000, async () => {
   console.log('Server running on port 3000');
   await db.orbitDBStore.startDB(config.db_address);
-  console.log(`IPFS is started!`)
+  console.log(`IPFS is started!`);
+  const orbitDB = await db.orbitDBStore.getDataStore();
+  await orbitDB.load();
+  console.log(`Starting loading in memory db!`);
 });
 
 module.exports = app;
