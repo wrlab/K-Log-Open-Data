@@ -13,9 +13,6 @@ const root = require('./graphql/api');
 
 const indexRouter = require('./routes/index');
 
-// Api for orbit db
-// const airQualityRouterApi = require('./routes/api/air-quality');
-
 // Thing Description Routes
 const airQuality= require('./routes/td/air-quality');
 const cushion = require('./routes/td/cushion');
@@ -40,16 +37,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 app.use('/graphql', graphqlHTTP({
   schema: schema,
   rootValue: root,
   graphiql: true,
 }));
 
-app.use('/td', indexRouter);
-// app.use('/api/airquality', airQualityRouterApi);
-
-// catch 404 and forward to error handler
 app.use('/test',async function(req, res, next) {
   const orbitDB = await db.orbitDBStore.getDataStore();
 
@@ -60,6 +54,7 @@ app.use('/test',async function(req, res, next) {
   res.send(data);
 });
 
+app.use('/td', indexRouter);
 app.use('/td/airquality', airQuality);
 app.use('/td/cushion', cushion);
 app.use('/td/energyApplianceMonitor', energyApplianceMonitor);
