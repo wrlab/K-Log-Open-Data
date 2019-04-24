@@ -37,7 +37,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
 app.use('/graphql', graphqlHTTP({
   schema: schema,
   rootValue: root,
@@ -88,8 +87,8 @@ app.listen(3000, async () => {
   await db.orbitDBStore.startDB(config.db_address);
   console.log(`IPFS is started!`);
   const orbitDB = await db.orbitDBStore.getDataStore();
-  await orbitDB.load();
   console.log(`Starting loading in memory db!`);
+  await orbitDB.load();
 });
 
 module.exports = app;
