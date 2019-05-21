@@ -58,6 +58,8 @@ const schema = buildSchema(`
   },
   
   type Sleep {
+    _id: String,
+    _index: String,
     name: String,
     user: String,
     address: String,
@@ -70,6 +72,8 @@ const schema = buildSchema(`
   },
   
   type SmartTable {
+    _id: String,
+    _index: String,
     name: String,
     user: String,
     address: String,
@@ -82,6 +86,8 @@ const schema = buildSchema(`
   },
   
   type SmartWatch {
+    _id: String,
+    _index: String,
     name: String,
     user: String,
     address: String,
@@ -97,6 +103,8 @@ const schema = buildSchema(`
   },
   
   type IPCamera {
+    _id: String,
+    _index: String,
     name: String,
     user: String,
     address: String,
@@ -107,6 +115,8 @@ const schema = buildSchema(`
   },
   
   type IPFSCamera {
+    _id: String,
+    _index: String,
     name: String,
     user: String,
     address: String,

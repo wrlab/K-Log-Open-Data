@@ -26,6 +26,7 @@ const smartWatch = require('./routes/td/smart-watch');
 const webizingOntology = require('./middleware/webizing-ontology');
 
 const app = express();
+const cors = require('cors');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -36,6 +37,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(cors());
 
 app.use('/graphql', graphqlHTTP({
   schema: schema,
@@ -82,8 +85,8 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(3000, async () => {
-  console.log('Server running on port 3000');
+app.listen(4000, async () => {
+  console.log('Server running on port 4000');
   await db.orbitDBStore.startDB(config.db_address);
   console.log(`IPFS is started!`);
   const orbitDB = await db.orbitDBStore.getDataStore();
