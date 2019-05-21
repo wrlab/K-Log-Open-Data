@@ -25,6 +25,8 @@ const smartTable = require('./routes/td/smart-table');
 const smartWatch = require('./routes/td/smart-watch');
 const webizingOntology = require('./middleware/webizing-ontology');
 
+const smartWatchRouter = require('./routes/smart-watch');
+
 const app = express();
 const cors = require('cors');
 
@@ -46,15 +48,7 @@ app.use('/graphql', graphqlHTTP({
   graphiql: true,
 }));
 
-app.use('/test',async function(req, res, next) {
-  const orbitDB = await db.orbitDBStore.getDataStore();
 
-  await orbitDB.load();
-
-  const data = await orbitDB.get('');
-  console.log(`Data length: ${data.length}`);
-  res.send(data);
-});
 
 app.use('/td', indexRouter);
 app.use('/td/airquality', airQuality);
@@ -66,6 +60,7 @@ app.use('/td/ipfsCamera', ipfsCamera);
 app.use('/td/sleep', sleep);
 app.use('/td/smartTable', smartTable);
 app.use('/td/smartWatch', smartWatch);
+app.use('/mg', smartWatchRouter);
 
 app.use('/', webizingOntology());
 
@@ -87,11 +82,16 @@ app.use(function(err, req, res, next) {
 
 app.listen(4000, async () => {
   console.log('Server running on port 4000');
-  await db.orbitDBStore.startDB(config.db_address);
-  console.log(`IPFS is started!`);
-  const orbitDB = await db.orbitDBStore.getDataStore();
-  console.log(`Starting loading in memory db!`);
-  await orbitDB.load();
+  try {
+    await db.orbitDBStore.startDB(config.db_address);
+    console.log(`IPFS is started!`);
+    const orbitDB = await db.orbitDBStore.getDataStore();
+    console.log(`Starting loading in memory db!`);
+    await orbitDB.load();
+  }catch (e) {
+    console.error(`Check if daemon is running jsipfs daemon --enable-pubsub-experiment ${e}`)
+  }
+
 });
 
 module.exports = app;

@@ -65,10 +65,7 @@ const schema = buildSchema(`
     address: String,
     room: String,
     location: String,
-    time: String,
-    startDate: String,
-    endDate: String, 
-    totalSleep: Float
+    sleep: [SleepAnalysis]
   },
   
   type SmartTable {
@@ -85,6 +82,41 @@ const schema = buildSchema(`
     snapShot: String
   },
   
+  type StepCount {
+    _id: String,
+    startDate: String,
+    endDate: String, 
+    stepCount: Int, 
+  }
+  
+  type SleepAnalysis {
+    _id: String,
+    startDate: String,
+    endDate: String, 
+    status: String, 
+  }
+  
+  type ExerciseTime {
+    _id: String,
+    startDate: String,
+    endDate: String, 
+    exerciseTime: Int, 
+  }
+  
+  type HeartRate {
+    _id: String,
+    startDate: String,
+    endDate: String, 
+    heartRate: Int, 
+  }
+  
+  type StandHour {
+   _id: String,
+    startDate: String,
+    endDate: String, 
+    standHour: Float, 
+  }
+  
   type SmartWatch {
     _id: String,
     _index: String,
@@ -93,13 +125,10 @@ const schema = buildSchema(`
     address: String,
     room: String,
     location: String,
-    time: String,
-    startDate: String,
-    endDate: String, 
-    stepCount: Int, 
-    heartRate: Int, 
-    exerciseTime: Float, 
-    standHour: Float
+    stepCount: [StepCount], 
+    heartRate: [HeartRate], 
+    exerciseTime: [ExerciseTime], 
+    standHour: [StandHour]
   },
   
   type IPCamera {
@@ -142,9 +171,9 @@ const schema = buildSchema(`
     energyMonitorList(orderBy: OrderBy): [EnergyMonitor],
     
     energyApplianceMonitor: EnergyApplianceMonitor,
-    sleep: Sleep,
+    sleep(name: String, startDate: String, endDate: String): Sleep,
     smartTable: SmartTable,
-    smartWatch: SmartWatch,
+    smartWatch(name: String, startDate: String, endDate: String): SmartWatch,
     ipCamera: IPCamera,
     ipfsCamera: IPFSCamera
   }

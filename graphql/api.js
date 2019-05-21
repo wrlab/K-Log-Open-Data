@@ -1,4 +1,6 @@
 const db = require('../db');
+const MongoClient = require('mongodb').MongoClient;
+const constants = require('../constants');
 
 // The root provides a resolver function for each API endpoint
 const root = {
@@ -133,18 +135,32 @@ const root = {
             "activePower": "2030.03"
         }
     },
-    sleep: async () => {
-        return {
-            "name": "Foobot00",
-            "user": "jonghoLee",
+    sleep: async ({ name, startDate, endDate }) => {
+        const client = await MongoClient.connect('mongodb://localhost:27017', { useNewUrlParser: true });
+
+        const db = client.db('k-log-iot');
+
+        // const name = 'smartWatch01';
+        // const startDate = "2019-05-21T14:03:00Z";
+        // const endDate = "2019-05-21T14:03:00Z";
+
+        const docs = await db.collection(constants.SLEEP).find({name: name}).toArray();
+
+        const filteredDocs = docs.filter((item) => {
+            return new Date(startDate) <= new Date(item.startDate) && new Date(item.endDate) <= new Date(endDate);
+        });
+
+        const output =  {
+            "name": name,
+            "user": "alex",
             "address": "kist-l1",
             "room": "L8321",
             "location": "On the table",
-            "time": "2017-05-30T18:54:20+09:00",
-            "startDate": "2017-09-10T00:00:00+09:00",
-            "endDate": "2017-09-10T06:30:00+09:00",
-            "totalSleep": "480.34"
-        }
+            "sleep": filteredDocs
+        };
+
+        return output;
+
     },
     smartTable: async () => {
         return {
@@ -159,20 +175,43 @@ const root = {
             "snapShot": "https://schema.iot.webizing.org/pictures/20180826"
         }
     },
-    smartWatch: async () => {
+    smartWatch: async ({ name, startDate, endDate }) => {
+        const client = await MongoClient.connect('mongodb://localhost:27017', { useNewUrlParser: true });
+
+        const db = client.db('k-log-iot');
+
+        // const name = 'smartWatch01';
+        // const startDate = "2019-05-21T14:03:00Z";
+        // const endDate = "2019-05-21T14:03:00Z";
+
+        const docsExT = await db.collection(constants.EXERCISE_TIME).find({name: name}).toArray();
+        const docsSH = await db.collection(constants.STAND_HOUR).find({name: name}).toArray();
+        const docsSC = await db.collection(constants.STEP_COUNT).find({name: name}).toArray();
+        const docsHR = await db.collection(constants.HEART_RATE).find({name: name}).toArray();
+
+        const filteredDocsExT= docsExT.filter((item) => {
+            return new Date(startDate) <= new Date(item.startDate) && new Date(item.endDate) <= new Date(endDate);
+        });
+        const filteredDocsSH= docsSH.filter((item) => {
+            return new Date(startDate) <= new Date(item.startDate) && new Date(item.endDate) <= new Date(endDate);
+        });
+        const filteredDocsSC= docsSC.filter((item) => {
+            return new Date(startDate) <= new Date(item.startDate) && new Date(item.endDate) <= new Date(endDate);
+        });
+        const filteredDocsHR= docsHR.filter((item) => {
+            return new Date(startDate) <= new Date(item.startDate) && new Date(item.endDate) <= new Date(endDate);
+        });
+
         return {
-            "name": "Foobot00",
-            "user": "jonghoLee",
+            "name": name,
+            "user": "alex",
             "address": "kist-l1",
             "room": "L8321",
             "location": "On the table",
-            "time": "2017-05-30T18:54:20+09:00",
-            "startDate": "2017-09-10T00:00:00+09:00",
-            "endDate": "2017-09-10T06:30:00+09:00",
-            "stepCount": "1830",
-            "heartRate": "115",
-            "exerciseTime": "95.5",
-            "standHour": "1.02"
+            "stepCount": filteredDocsSC,
+            "heartRate":  filteredDocsHR,
+            "exerciseTime": filteredDocsExT,
+            "standHour": filteredDocsSH
         }
     },
     ipCamera: async () => {
