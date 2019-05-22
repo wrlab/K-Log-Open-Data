@@ -156,7 +156,7 @@ const root = {
             "address": "kist-l1",
             "room": "L8321",
             "location": "On the table",
-            "sleep": filteredDocs
+            "sleepAnalysis": filteredDocs
         };
 
         return output;
@@ -179,10 +179,6 @@ const root = {
         const client = await MongoClient.connect('mongodb://localhost:27017', { useNewUrlParser: true });
 
         const db = client.db('k-log-iot');
-
-        // const name = 'smartWatch01';
-        // const startDate = "2019-05-21T14:03:00Z";
-        // const endDate = "2019-05-21T14:03:00Z";
 
         const docsExT = await db.collection(constants.EXERCISE_TIME).find({name: name}).toArray();
         const docsSH = await db.collection(constants.STAND_HOUR).find({name: name}).toArray();

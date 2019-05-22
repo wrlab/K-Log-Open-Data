@@ -35,7 +35,7 @@
       "type": "string",
       "title": "Address",
       "description": "building where the sensor resides - format: organization-building ex)yongjaelee-house, kist-l1, kist-l8",
-      "forms": [{"href": "http://localhost:3000/graphql?query={ sleep(name:\"smartWatch01\", startDate: \"2019-05-15T10:13:00Z\", endDate: \"2019-05-21T14:03:00Z\") { address}}", "op": ["readproperty"], "contentType": "application/json"}],
+      "forms": [{"href": "http://localhost:3000/graphql?query={ sleep(name:\"smartWatch01\", startDate: \"2019-05-15T10:13:00Z\", endDate: \"2019-05-21T14:03:00Z\") { address }}", "op": ["readproperty"], "contentType": "application/json"}],
       "readOnly": true
     },
     "room": {
@@ -64,7 +64,7 @@
       },
       "title": "Sleep analysis",
       "description": "sleep analysis status: Inbed or Asleep",
-      "forms": [{"href": "http://localhost:3000/graphql?query={ sleep(name:\"smartWatch01\", startDate: \"2019-05-15T10:13:00Z\", endDate: \"2019-05-21T14:03:00Z\") {totalSleep }}", "op": ["readproperty"], "contentType": "application/json"}],
+      "forms": [{"href": "http://localhost:3000/graphql?query={ sleep(name:\"smartWatch01\", startDate: \"2019-05-15T10:13:00Z\", endDate: \"2019-05-21T14:03:00Z\") {sleepAnalysis{startDate endDate status} }}", "op": ["readproperty"], "contentType": "application/json"}],
       "readOnly": true
     }
   },

@@ -65,7 +65,7 @@ const schema = buildSchema(`
     address: String,
     room: String,
     location: String,
-    sleep: [SleepAnalysis]
+    sleepAnalysis: [SleepAnalysis]
   },
   
   type SmartTable {
