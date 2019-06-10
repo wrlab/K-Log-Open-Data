@@ -24,7 +24,6 @@ router.get('/heart-rate', async (req,res) => {
             }
         });
     });
-
 });
 
 router.post('/heart-rate', async (req, res) => {

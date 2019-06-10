@@ -84,7 +84,8 @@
       "forms": [{
         "href": "http://localhost:3000/graphql?query={ sleep(name) { location }}",
         "op": ["readproperty"],
-        "contentType": "application/json"}],
+        "contentType": "application/json"
+      }],
       "readOnly": true
     },
     "sleepAnalysis": {
@@ -101,18 +102,25 @@
         "name": {
           "type": "string",
           "@type": "name"
+        },
+        "startDate": {
+          "type": "string",
+          "@type": "time"
+        },
+        "endDate": {
+          "type": "string",
+          "@type": "time"
         }
       },
       "forms": [{
         "href": "http://localhost:3000/graphql?query={ sleep(name) {sleepAnalysis{startDate endDate status} }}",
         "op": ["readproperty"],
-        "contentType": "application/json",
+        "contentType": "application/json"
       }],
       "readOnly": true
     }
   },
-  "forms": [
-    {
+  "forms": [{
       "htv:methodName": "GET",
       "uriVariables": {
         "name": {
@@ -131,8 +139,7 @@
       "href": "http://localhost:4000/graphql?query={ smartWatch(name, startDate, endDate)  {name user   address    room   location stepCount{startDate endDate stepCount} heartRate{startDate endDate heartRate} exerciseTime{startDate endDate exerciseTime} standHour{startDate endDate standHour}}}",
       "contentType": "application/json",
       "op": ["readallproperties"]
-    }
-  ],
+  }],
   "securityDefinitions": {"nosec_sc": {"description" : "no security","scheme": "nosec"}},
   "security": ["nosec_sc"],
   "version": {"instance":"0.0.1" }

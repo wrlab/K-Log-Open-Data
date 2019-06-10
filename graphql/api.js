@@ -140,7 +140,6 @@ const root = {
 
         const db = client.db('k-log-iot');
 
-        // const name = 'smartWatch01';
         // const startDate = "2019-05-21T14:03:00Z";
         // const endDate = "2019-05-21T14:03:00Z";
 
@@ -151,7 +150,7 @@ const root = {
         });
 
         const output =  {
-            "name": name,
+            "name": name ? name : 'smartWatch01',
             "user": "alex",
             "address": "kist-l1",
             "room": "L8321",
@@ -199,7 +198,7 @@ const root = {
         });
 
         return {
-            "name": name,
+            "name": name ? name : 'smartWatch01',
             "user": "alex",
             "address": "kist-l1",
             "room": "L8321",
