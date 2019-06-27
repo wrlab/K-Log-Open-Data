@@ -71,6 +71,17 @@
       "readOnly": true
     }
   },
+  "actions": {
+    "getIdentitiesLocation": {
+      "title": "Showing people location",
+      "description": "Determine people location processing camera's output",
+      "output": {
+        "user": "String",
+        "room": "String",
+        "timestamp": "Date"
+      }
+    }
+  },
   "forms": [
     {
       "href": "http://localhost:3000/graphql?query={ ipCamera {name user address room location time url}}",

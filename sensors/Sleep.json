@@ -113,11 +113,22 @@
         }
       },
       "forms": [{
-        "href": "http://localhost:3000/graphql?query={ sleep(name) {sleepAnalysis{startDate endDate status} }}",
+        "href": "http://localhost:3000/graphql?query={ sleep(name, startDate, endDate) {sleepAnalysis{startDate endDate status} }}",
         "op": ["readproperty"],
         "contentType": "application/json"
       }],
       "readOnly": true
+    }
+  },
+  "actions": {
+    "totalSleep": {
+      "safe": false,
+      "idempotent": false,
+      "forms": [{
+        "op": "invokeaction",
+        "href": "https://mylamp.example.com/toggle",
+        "contentType": "application/json"
+      }]
     }
   },
   "forms": [{
@@ -136,7 +147,7 @@
           "@type": "time"
         }
       },
-      "href": "http://localhost:4000/graphql?query={ smartWatch(name, startDate, endDate)  {name user   address    room   location stepCount{startDate endDate stepCount} heartRate{startDate endDate heartRate} exerciseTime{startDate endDate exerciseTime} standHour{startDate endDate standHour}}}",
+      "href": "http://localhost:4000/graphql?query={ sleep(name, startDate, endDate)  {name user   address    room   location stepCount{startDate endDate stepCount} heartRate{startDate endDate heartRate} exerciseTime{startDate endDate exerciseTime} standHour{startDate endDate standHour}}}",
       "contentType": "application/json",
       "op": ["readallproperties"]
   }],
