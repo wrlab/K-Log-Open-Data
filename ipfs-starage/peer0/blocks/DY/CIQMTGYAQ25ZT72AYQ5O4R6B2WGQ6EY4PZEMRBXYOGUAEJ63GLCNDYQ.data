@@ -1,2 +1,0 @@
-
-¹±{"name":"ExerciseTime Sensor","pin":true,"mill":"/json","json_schema":{"$id":"https://.../td/exerciseTime Sensor","$schema":"http://json-schema.org/draft-07/schema#","properties":{"endDate":{"type":"string"},"exerciseTime":{"type":"number"},"name":{"type":"string"},"startDate":{"type":"string"},"user":{"type":"string"}},"required":["name","user","startDate","endDate","exerciseTime"],"title":"ExerciseTime Sensor","type":"object"}}±

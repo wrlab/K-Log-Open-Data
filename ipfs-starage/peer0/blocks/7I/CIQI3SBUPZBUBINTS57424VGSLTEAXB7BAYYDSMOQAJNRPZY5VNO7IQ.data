@@ -1,2 +1,0 @@
-
-¤œ{"name":"StepCount Sensor","pin":true,"mill":"/json","json_schema":{"$id":"https://.../td/step-count","$schema":"http://json-schema.org/draft-07/schema#","properties":{"endDate":{"type":"string"},"name":{"type":"string"},"startDate":{"type":"string"},"stepCount":{"type":"number"},"user":{"type":"string"}},"required":["name","user","startDate","endDate","stepCount"],"title":"StepCount Sensor","type":"object"}}œ

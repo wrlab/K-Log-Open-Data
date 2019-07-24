@@ -1,2 +1,0 @@
-
-��{"name":"Sleep Sensor","pin":true,"mill":"/json","json_schema":{"$id":"https://.../td/Sleep Sensor","$schema":"http://json-schema.org/draft-07/schema#","description":"수면 시작 시간, 수면 끝 시간, 총 수면 시간 로깅 JSON-LD Format ex)Beddit, Fitbit","properties":{"endDate":{"type":"string"},"name":{"type":"string"},"startDate":{"type":"string"},"status":{"type":"string"},"user":{"type":"string"}},"required":["name","user","startDate","endDate","status"],"title":"IPCamera Sensor","type":"object"}}�
