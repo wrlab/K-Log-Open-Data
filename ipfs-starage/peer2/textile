@@ -1,0 +1,78 @@
+{
+    "Account": {
+        "Address": "P8QoiDQKnt6m4BqF9pX6ySrp4jyd5scNpfacHwWuRAYNSsUU",
+        "Thread": "12D3KooWP1adN1foE8hYbvPpTJeSm9KL9PpgjAXxAKWXweidmtad"
+    },
+    "Addresses": {
+        "API": "0.0.0.0:40600",
+        "CafeAPI": "0.0.0.0:40601",
+        "Gateway": "0.0.0.0:5050",
+        "Profiling": "0.0.0.0:6060"
+    },
+    "API": {
+        "HTTPHeaders": {
+            "Access-Control-Allow-Headers": [
+                "Origin",
+                "Accept",
+                "Content-Type",
+                "X-Requested-With",
+                "Method",
+                "X-Textile-Args",
+                "X-Textile-Opts"
+            ],
+            "Access-Control-Allow-Methods": [
+                "CONNECT",
+                "DELETE",
+                "GET",
+                "HEAD",
+                "OPTIONS",
+                "PATCH",
+                "POST",
+                "PUT",
+                "TRACE"
+            ],
+            "Access-Control-Allow-Origin": [
+                "http://localhost:*",
+                "http://127.0.0.1:*"
+            ],
+            "Server": [
+                "go-textile/0.6.2"
+            ]
+        },
+        "SizeLimit": 0
+    },
+    "Gateway": {
+        "HTTPHeaders": {
+            "Access-Control-Allow-Headers": [
+                "*"
+            ],
+            "Access-Control-Allow-Methods": [
+                "CONNECT",
+                "DELETE",
+                "GET",
+                "HEAD",
+                "OPTIONS",
+                "PATCH",
+                "POST",
+                "PUT",
+                "TRACE"
+            ],
+            "Access-Control-Allow-Origin": [
+                "*"
+            ]
+        }
+    },
+    "Logs": {
+        "LogToDisk": false
+    },
+    "IsMobile": false,
+    "IsServer": false,
+    "Cafe": {
+        "Host": {
+            "Open": false,
+            "URL": "",
+            "NeighborURL": "",
+            "SizeLimit": 0
+        }
+    }
+}

@@ -3,8 +3,6 @@ const { buildSchema } = require('graphql');
 // Construct a schema, using GraphQL schema language
 const schema = buildSchema(`
   type AirQuality {
-    _id: String,
-    _index: String,
     name: String,
     user: String,
     address: String,
@@ -162,7 +160,7 @@ const schema = buildSchema(`
    
   type Query {
     airQuality(names: [String]): [AirQuality],
-    airQualityList(name: String, orderBy: OrderBy): [AirQuality],
+    airQualityList(names: [String], orderBy: OrderBy): [AirQuality],
     
     cushion: Cushion,
     cushionList: [Cushion],

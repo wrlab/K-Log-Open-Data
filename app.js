@@ -5,13 +5,13 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
-const db = require('./db');
 const config = require('./config');
 
 const schema = require('./graphql/schema');
 const root = require('./graphql/api');
 
 const indexRouter = require('./routes/index');
+const textileRouter = require('./routes/textile');
 
 // Thing Description Routes
 const airQuality= require('./routes/td/air-quality');
@@ -23,7 +23,6 @@ const ipfsCamera = require('./routes/td/ipfs-camera');
 const sleep = require('./routes/td/sleep');
 const smartTable = require('./routes/td/smart-table');
 const smartWatch = require('./routes/td/smart-watch');
-const webizingOntology = require('./middleware/webizing-ontology');
 
 const smartWatchRouter = require('./routes/smart-watch');
 
@@ -48,8 +47,7 @@ app.use('/graphql', graphqlHTTP({
   graphiql: true,
 }));
 
-
-
+app.use('/textile', textileRouter);
 app.use('/td', indexRouter);
 app.use('/td/airquality', airQuality);
 app.use('/td/cushion', cushion);
@@ -61,8 +59,6 @@ app.use('/td/sleep', sleep);
 app.use('/td/smartTable', smartTable);
 app.use('/td/smartWatch', smartWatch);
 app.use('/mg', smartWatchRouter);
-
-app.use('/', webizingOntology());
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -82,16 +78,6 @@ app.use(function(err, req, res, next) {
 
 app.listen(4000, async () => {
   console.log('Server running on port 4000');
-  try {
-    await db.orbitDBStore.startDB(config.db_address);
-    console.log(`IPFS is started!`);
-    const orbitDB = await db.orbitDBStore.getDataStore();
-    console.log(`Starting loading in memory db!`);
-    await orbitDB.load();
-  }catch (e) {
-    console.error(`Check if daemon is running jsipfs daemon --enable-pubsub-experiment ${e}`)
-  }
-
 });
 
 module.exports = app;

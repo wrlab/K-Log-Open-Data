@@ -1,0 +1,2 @@
+
+ª¢{"name":"HeartRate Sensor","pin":true,"mill":"/json","json_schema":{"$id":"https://.../td/heartRate Sensor","$schema":"http://json-schema.org/draft-07/schema#","properties":{"endDate":{"type":"string"},"heartRate":{"type":"number"},"name":{"type":"string"},"startDate":{"type":"string"},"user":{"type":"string"}},"required":["name","user","startDate","endDate","heartRate"],"title":"HeartRate Sensor","type":"object"}}¢

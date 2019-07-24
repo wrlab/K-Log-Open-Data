@@ -1,0 +1,2 @@
+
+ª¢{"name":"StandHour Sensor","pin":true,"mill":"/json","json_schema":{"$id":"https://.../td/standHour Sensor","$schema":"http://json-schema.org/draft-07/schema#","properties":{"endDate":{"type":"string"},"name":{"type":"string"},"standHour":{"type":"number"},"startDate":{"type":"string"},"user":{"type":"string"}},"required":["name","user","startDate","endDate","standHour"],"title":"StepCount Sensor","type":"object"}}¢

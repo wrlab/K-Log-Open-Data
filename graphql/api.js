@@ -1,15 +1,108 @@
-const db = require('../db');
 const MongoClient = require('mongodb').MongoClient;
 const constants = require('../constants');
+
+const { Textile } = require("@textile/js-http-client");
+
+const airQualitySchema = require('../schemas/AirQuality');
+const cushionSchema = require('../schemas/Cushion');
+const energyApplianceMonitorSchema = require('../schemas/EnergyApplianceMonitor');
+const energyMonitorSchema = require('../schemas/EnergyMonitor');
+const ipCameraSchema = require('../schemas/IPCamera');
+const ipfsCameraSchema = require('../schemas/IPFSCamera');
+const smartTableSchema = require('../schemas/SmartTable');
+
+const threadConfig = require('../config.json');
+
+// Or, create an instance specifying your custom Textile node API connection
+const textile = new Textile({
+    url: "http://127.0.0.1",
+    port: 40600,
+});
+
+const textile2 = new Textile({
+    url: "http://127.0.0.1",
+    port: 40700,
+});
+
+const textile3 = new Textile({
+    url: "http://127.0.0.1",
+    port: 40800,
+});
+
+const textile4 = new Textile({
+    url: "http://127.0.0.1",
+    port: 40900,
+});
+
+const textile5 = new Textile({
+    url: "http://127.0.0.1",
+    port: 41000,
+});
+
+const textile6 = new Textile({
+    url: "http://127.0.0.1",
+    port: 41100,
+});
+
+const textile7 = new Textile({
+    url: "http://127.0.0.1",
+    port: 41200,
+});
+
+const textile8 = new Textile({
+    url: "http://127.0.0.1",
+    port: 41300,
+});
+
+const textile9 = new Textile({
+    url: "http://127.0.0.1",
+    port: 41400,
+});
+
+const textile10 = new Textile({
+    url: "http://127.0.0.1",
+    port: 41500,
+});
+
+const textile11 = new Textile({
+    url: "http://127.0.0.1",
+    port: 41600,
+});
+
+const textile12 = new Textile({
+    url: "http://127.0.0.1",
+    port: 41700,
+});
+
+
+const AIR_QUALITY = "air-quality";
+const CUSHION = "cushion";
+const ENERGY_APPLIANCE_MONITOR = "energy-appliance-monitor";
+const ENERGY_MONITOR = "energy-monitor";
+const IP_CAMERA = "ip-camera";
+const IPFS_CAMERA = "ipfs-camera";
+const SMART_TABLE = "smart-table";
 
 // The root provides a resolver function for each API endpoint
 const root = {
     airQuality: async ({names}) => {
-        const orbitDB = await db.orbitDBStore.getDataStore();
+        const LIMIT = 1000;
+        let data = [];
+        try {
+            const list = await textile.files.list(threadConfig[AIR_QUALITY].id, "", LIMIT);
 
-        await orbitDB.load();
-
-        const data = await orbitDB.query((doc) => doc['_index'] === 'airquality');
+            if (list !== undefined) {
+                for await (let item of list.items) {
+                    const buf = await textile.blocks.fileContent(item.block);
+                    const str = String.fromCharCode.apply(null, new Uint8Array(buf));
+                    data.push(JSON.parse(str))
+                }
+            }
+        }catch (e) {
+            if(e.message === "Not Found") {
+                console.log("airQuality not found")
+            }
+        }
 
         let output = [];
         let uniqueAirQualityNames = [];
@@ -40,11 +133,23 @@ const root = {
     },
 
     airQualityList: async ({names, orderBy}) => {
-        const orbitDB = await db.orbitDBStore.getDataStore();
+        const LIMIT = 1000;
+        let data = [];
+        try {
+            const list = await textile.files.list(threadConfig[AIR_QUALITY].id, "", LIMIT);
 
-        await orbitDB.load();
-
-        let data = await orbitDB.query((doc) => doc['_index'] === 'airquality');
+            if (list !== undefined) {
+                for await (let item of list.items) {
+                    const buf = await textile.blocks.fileContent(item.block);
+                    const str = String.fromCharCode.apply(null, new Uint8Array(buf));
+                    data.push(JSON.parse(str))
+                }
+            }
+        }catch (e) {
+            if(e.message === "Not Found") {
+                console.log("airQuality not found")
+            }
+        }
 
         let uniqueAirQualityNames = [];
 
@@ -59,47 +164,83 @@ const root = {
                 }
             }
         }
-        for (let i = 0; i < uniqueAirQualityNames.length; i++) {
-            data = data.filter((data) => data.name === uniqueAirQualityNames[i]);
-        }
-
-        if(orderBy === "TIME") {
-            data.sort((a,b) => {
-                return new Date(b.time) - new Date(a.time)
-            })
-        }
+        // for (let i = 0; i < uniqueAirQualityNames.length; i++) {
+        //     data.filter((data) => data.name === uniqueAirQualityNames[i]);
+        // }
+        //
+        // if(orderBy === "TIME") {
+        //     data.sort((a,b) => {
+        //         return new Date(b.time) - new Date(a.time)
+        //     })
+        // }
 
         console.log(`Data length: ${data.length}`);
 
         return data
     },
     cushion: async () => {
-        const orbitDB = await db.orbitDBStore.getDataStore();
+        const LIMIT = 1000;
+        let data = [];
+        try {
+            const list = await textile2.files.list(threadConfig[CUSHION].id, "", LIMIT);
 
-        await orbitDB.load();
-
-        const data = await orbitDB.query((doc) => doc['_index'] === 'cushion');
+            if (list !== undefined) {
+                for await (let item of list.items) {
+                    const buf = await textile2.blocks.fileContent(item.block);
+                    const str = String.fromCharCode.apply(null, new Uint8Array(buf));
+                    data.push(JSON.parse(str))
+                }
+            }
+        }catch (e) {
+            if(e.message === "Not Found") {
+                console.log("airQuality not found")
+            }
+        }
         console.log(`Data length: ${data.length}`);
 
         return data[0]
     },
     cushionList: async () => {
-        const orbitDB = await db.orbitDBStore.getDataStore();
+        const LIMIT = 1000;
+        let data = [];
+        try {
+            const list = await textile2.files.list(threadConfig[CUSHION].id, "", LIMIT);
 
-        await orbitDB.load();
-
-        const data = await orbitDB.query((doc) => doc['_index'] === 'cushion');
+            if (list !== undefined) {
+                for await (let item of list.items) {
+                    const buf = await textile2.blocks.fileContent(item.block);
+                    const str = String.fromCharCode.apply(null, new Uint8Array(buf));
+                    data.push(JSON.parse(str))
+                }
+            }
+        }catch (e) {
+            if(e.message === "Not Found") {
+                console.log("airQuality not found")
+            }
+        }
         console.log(`Data length: ${data.length}`);
 
         return data
     },
 
     energyMonitor: async () => {
-        const orbitDB = await db.orbitDBStore.getDataStore();
+        const LIMIT = 1000;
+        let data = [];
+        try {
+            const list = await textile3.files.list(threadConfig[ENERGY_MONITOR].id, "", LIMIT);
 
-        await orbitDB.load();
-
-        const data = await orbitDB.query((doc) => doc['_index'] === 'energymonitor');
+            if (list !== undefined) {
+                for await (let item of list.items) {
+                    const buf = await textile3.blocks.fileContent(item.block);
+                    const str = String.fromCharCode.apply(null, new Uint8Array(buf));
+                    data.push(JSON.parse(str))
+                }
+            }
+        }catch (e) {
+            if(e.message === "Not Found") {
+                console.log("airQuality not found")
+            }
+        }
         console.log(`Data length: ${data.length}`);
 
         data.sort((a,b) => {
@@ -109,11 +250,23 @@ const root = {
         return data[0]
     },
     energyMonitorList: async ({orderBy}) => {
-        const orbitDB = await db.orbitDBStore.getDataStore();
+        const LIMIT = 1000;
+        let data = [];
+        try {
+            const list = await textile4.files.list(threadConfig[ENERGY_MONITOR].id, "", LIMIT);
 
-        await orbitDB.load();
-
-        const data = await orbitDB.query((doc) => doc['_index'] === 'energymonitor');
+            if (list !== undefined) {
+                for await (let item of list.items) {
+                    const buf = await textile4.blocks.fileContent(item.block);
+                    const str = String.fromCharCode.apply(null, new Uint8Array(buf));
+                    data.push(JSON.parse(str))
+                }
+            }
+        }catch (e) {
+            if(e.message === "Not Found") {
+                console.log("airQuality not found")
+            }
+        }
 
         if(orderBy === "TIME") {
             data.sort((a,b) => {
@@ -124,16 +277,30 @@ const root = {
         return data
     },
     energyApplianceMonitor: async () => {
-        return {
-            "name": "Foobot00",
-            "user": "jonghoLee",
-            "address": "kist-l1",
-            "room": "L8321",
-            "location": "On the table",
-            "time": "2017-05-30T18:54:20+09:00",
-            "applianceId": "W983MF",
-            "activePower": "2030.03"
+        const LIMIT = 1000;
+        let data = [];
+        try {
+            const list = await textile5.files.list(threadConfig[ENERGY_APPLIANCE_MONITOR].id, "", LIMIT);
+
+            if (list !== undefined) {
+                for await (let item of list.items) {
+                    const buf = await textile5.blocks.fileContent(item.block);
+                    const str = String.fromCharCode.apply(null, new Uint8Array(buf));
+                    data.push(JSON.parse(str))
+                }
+            }
+        }catch (e) {
+            if(e.message === "Not Found") {
+                console.log("airQuality not found")
+            }
         }
+        console.log(`Data length: ${data.length}`);
+
+        data.sort((a,b) => {
+            return new Date(b.time) - new Date(a.time)
+        });
+
+        return data[0]
     },
     sleep: async ({ name, startDate, endDate }) => {
         const client = await MongoClient.connect('mongodb://localhost:27017', { useNewUrlParser: true });
@@ -210,27 +377,56 @@ const root = {
         }
     },
     ipCamera: async () => {
-        return {
-            "name": "Foobot00",
-            "user": "jonghoLee",
-            "address": "kist-l1",
-            "room": "L8321",
-            "location": "On the table",
-            "time": "2017-05-30T18:54:20+09:00",
-            "url": "www.kist.videos/1"
+        const LIMIT = 1000;
+        let data = [];
+        try {
+            const list = await textile6.files.list(threadConfig[IP_CAMERA].id, "", LIMIT);
+
+            if (list !== undefined) {
+                for await (let item of list.items) {
+                    const buf = await textile6.blocks.fileContent(item.block);
+                    const str = String.fromCharCode.apply(null, new Uint8Array(buf));
+                    data.push(JSON.parse(str))
+                }
+            }
+        }catch (e) {
+            if(e.message === "Not Found") {
+                console.log("airQuality not found")
+            }
         }
+        console.log(`Data length: ${data.length}`);
+
+        data.sort((a,b) => {
+            return new Date(b.time) - new Date(a.time)
+        });
+
+        return data[0]
     },
     ipfsCamera: async () => {
-        return {
-            "name": "Foobot00",
-            "user": "jonghoLee",
-            "address": "kist-l1",
-            "room": "L8321",
-            "location": "On the table",
-            "time": "2017-05-30T18:54:20+09:00",
-            "url": "www.kist.videos/1",
-            "hash": "LKlasdfjloewLKDSF1239"
+        const LIMIT = 1000;
+        let data = [];
+        try {
+            const list = await textile7.files.list(threadConfig[IPFS_CAMERA].id, "", LIMIT);
+
+            if (list !== undefined) {
+                for await (let item of list.items) {
+                    const buf = await textile7.blocks.fileContent(item.block);
+                    const str = String.fromCharCode.apply(null, new Uint8Array(buf));
+                    data.push(JSON.parse(str))
+                }
+            }
+        }catch (e) {
+            if(e.message === "Not Found") {
+                console.log("airQuality not found")
+            }
         }
+        console.log(`Data length: ${data.length}`);
+
+        data.sort((a,b) => {
+            return new Date(b.time) - new Date(a.time)
+        });
+
+        return data[0]
     }
 };
 
