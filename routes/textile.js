@@ -115,6 +115,7 @@ router.get('/init', async (req, res) => {
         textileAirQuality,
         textileCushion,
         textileEnergyAppMonitor,
+        textileEnergyMonitor,
         textileIPCamera,
         textileIPFSCamera,
         textileSmartTable,
@@ -558,17 +559,17 @@ router.post('/stand-hour', async (req, res) => {
 });
 
 //every 7 minutes
-setInterval((param1)=> {
-    service.queryAirQuality((data) => {
-        textileAirQuality.files.add(data, "", param1)
-    })
-}, 20000, threadConfig[AIR_QUALITY].id);
+// setInterval((param1)=> {
+//     service.queryAirQuality((data) => {
+//         textileAirQuality.files.add(data, "", param1)
+//     })
+// }, 20000, threadConfig[AIR_QUALITY].id);
 
-//every 5 minute
-setInterval((param1)=> {
-    energyMonitorService.queryEnergyMonitor((data) => {
-        textileEnergyMonitor.files.add(data, "", param1)
-    })
-}, 20000, threadConfig[ENERGY_MONITOR].id);
+// //every 5 minute
+// setInterval((param1)=> {
+//     energyMonitorService.queryEnergyMonitor((data) => {
+//         textileEnergyMonitor.files.add(data, "", param1)
+//     })
+// }, 20000, threadConfig[ENERGY_MONITOR].id);
 
 module.exports = router;

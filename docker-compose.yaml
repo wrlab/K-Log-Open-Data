@@ -200,19 +200,3 @@ services:
 
    networks:
      - textile
-
-  peer12:
-   image: textile/go-textile:latest
-   container_name: peer12
-
-   volumes:
-     - /home/alexander/GitHub/webizing-td/ipfs-starage/peer12:/data/textile
-
-   ports:
-     - 4121:4001
-     - 8201:8081
-     - 5170:5050
-     - "127.0.0.1:41800:40600"
-
-   networks:
-     - textile

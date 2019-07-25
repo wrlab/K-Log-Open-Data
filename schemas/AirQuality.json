@@ -2,6 +2,7 @@
   "name": "air quality",
   "pin": true,
   "mill": "/json",
+  "plaintext": false,
   "json_schema": {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "https://.../td/AirQuality",

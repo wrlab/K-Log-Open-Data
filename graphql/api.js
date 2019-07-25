@@ -170,6 +170,15 @@ const root = {
                 }
             }
         }
+        let filtr = []
+        console.log(uniqueAirQualityNames)
+        for (let i = 0; i < uniqueAirQualityNames.length; i++) {
+            const output = data.filter(item => item.name === uniqueAirQualityNames[i]);
+
+            filtr.push(...output.sort((a,b) => {
+                return new Date(b.time) - new Date(a.time)
+            }));
+        }
         // for (let i = 0; i < uniqueAirQualityNames.length; i++) {
         //     data.filter((data) => data.name === uniqueAirQualityNames[i]);
         // }
@@ -182,7 +191,7 @@ const root = {
 
         console.log(`Data length: ${data.length}`);
 
-        return data
+        return filtr
     },
     cushion: async () => {
         const LIMIT = 1000;
