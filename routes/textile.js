@@ -109,11 +109,20 @@ router.get('/init', async (req, res) => {
 
     const arrSchema = [airQualitySchema, cushionSchema, energyApplianceMonitorSchema, energyMonitorSchema,
         ipCameraSchema, ipfsCameraSchema, smartTableSchema, sleepSchema, heartRateSchema,
-        standHourSchema, exerciseTimeSchema, stepCountSchema];
+        standHourSchema, stepCountSchema, exerciseTimeSchema];
 
     const endpoints = [
-        textile, textile2, textile3, textile4, textile5, textile6, textile7, textile8, textile9, textile10, textile11,
-        textile12
+        textileAirQuality,
+        textileCushion,
+        textileEnergyAppMonitor,
+        textileIPCamera,
+        textileIPFSCamera,
+        textileSmartTable,
+        textileSleep,
+        textileHeartRate,
+        textileStandHour,
+        textileStepCount,
+        textileExerciseTime
     ];
 
     const threadConfig = {};
