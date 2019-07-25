@@ -5,6 +5,7 @@ logs
 orbitdb
 ipfs-webizing-td
 db-http-api-client
+ipfs-starage
 
 # Runtime data
 pids

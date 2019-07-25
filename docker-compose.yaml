@@ -14,7 +14,7 @@ services:
     container_name: peer0
 
     volumes:
-      - /Users/alexander/Documents/GitHub/webizing-td/ipfs-starage/peer0:/data/textile
+      - /home/alexander/GitHub/webizing-td/ipfs-starage/peer0:/data/textile
 
     ports:
       - 4001:4001
@@ -30,7 +30,7 @@ services:
     container_name: peer1
 
     volumes:
-      - /Users/alexander/Documents/GitHub/webizing-td/ipfs-starage/peer1:/data/textile
+      - /home/alexander/GitHub/webizing-td/ipfs-starage/peer1:/data/textile
 
     ports:
       - 4011:4001
@@ -46,7 +46,7 @@ services:
     container_name: peer2
 
     volumes:
-      - /Users/alexander/Documents/GitHub/webizing-td/ipfs-starage/peer2:/data/textile
+      - /home/alexander/GitHub/webizing-td/ipfs-starage/peer2:/data/textile
 
     ports:
       - 4021:4001
@@ -62,7 +62,7 @@ services:
     container_name: peer3
 
     volumes:
-      - /Users/alexander/Documents/GitHub/webizing-td/ipfs-starage/peer3:/data/textile
+      - /home/alexander/GitHub/webizing-td/ipfs-starage/peer3:/data/textile
 
     ports:
       - 4031:4001
@@ -72,147 +72,147 @@ services:
 
     networks:
       - textile
-#
-#  peer4:
-#    image: textile/go-textile:latest
-#    container_name: peer4
-#
-#    volumes:
-#      - /Users/alexander/Documents/GitHub/webizing-td/ipfs-starage/peer4:/data/textile
-#
-#    ports:
-#      - 4041:4001
-#      - 8121:8081
-#      - 5090:5050
-#      - "127.0.0.1:41000:40600"
-#
-#    networks:
-#      - textile
-#
-#  peer5:
-#    image: textile/go-textile:latest
-#    container_name: peer5
-#
-#    volumes:
-#      - /Users/alexander/Documents/GitHub/webizing-td/ipfs-starage/peer5:/data/textile
-#
-#    ports:
-#      - 4051:4001
-#      - 8131:8081
-#      - 5100:5050
-#      - "127.0.0.1:41100:40600"
-#
-#    networks:
-#      - textile
-#
-#  peer6:
-#    image: textile/go-textile:latest
-#    container_name: peer6
-#
-#    volumes:
-#      - /Users/alexander/Documents/GitHub/webizing-td/ipfs-starage/peer6:/data/textile
-#
-#    ports:
-#      - 4061:4001
-#      - 8141:8081
-#      - 5110:5050
-#      - "127.0.0.1:41200:40600"
-#
-#    networks:
-#      - textile
-#
-#  peer7:
-#    image: textile/go-textile:latest
-#    container_name: peer7
-#
-#    volumes:
-#      - /Users/alexander/Documents/GitHub/webizing-td/ipfs-starage/peer7:/data/textile
-#
-#    ports:
-#      - 4071:4001
-#      - 8151:8081
-#      - 5120:5050
-#      - "127.0.0.1:41300:40600"
-#
-#    networks:
-#      - textile
-#
-#  peer8:
-#    image: textile/go-textile:latest
-#    container_name: peer8
-#
-#    volumes:
-#      - /Users/alexander/Documents/GitHub/webizing-td/ipfs-starage/peer8:/data/textile
-#
-#    ports:
-#      - 4081:4001
-#      - 8161:8081
-#      - 5130:5050
-#      - "127.0.0.1:41400:40600"
-#
-#    networks:
-#      - textile
-#
-#  peer9:
-#    image: textile/go-textile:latest
-#    container_name: peer9
-#
-#    volumes:
-#      - /Users/alexander/Documents/GitHub/webizing-td/ipfs-starage/peer9:/data/textile
-#
-#    ports:
-#      - 4091:4001
-#      - 8171:8081
-#      - 5140:5050
-#      - "127.0.0.1:41500:40600"
-#
-#    networks:
-#      - textile
-#
-#  peer10:
-#    image: textile/go-textile:latest
-#    container_name: peer10
-#
-#    volumes:
-#      - /Users/alexander/Documents/GitHub/webizing-td/ipfs-starage/peer10:/data/textile
-#
-#    ports:
-#      - 4101:4001
-#      - 8181:8081
-#      - 5150:5050
-#      - "127.0.0.1:41600:40600"
-#
-#    networks:
-#      - textile
-#
-#  peer11:
-#    image: textile/go-textile:latest
-#    container_name: peer11
-#
-#    volumes:
-#      - /Users/alexander/Documents/GitHub/webizing-td/ipfs-starage/peer11:/data/textile
-#
-#    ports:
-#      - 4111:4001
-#      - 8191:8081
-#      - 5160:5050
-#      - "127.0.0.1:41700:40600"
-#
-#    networks:
-#      - textile
-#
-#  peer12:
-#    image: textile/go-textile:latest
-#    container_name: peer12
-#
-#    volumes:
-#      - /Users/alexander/Documents/GitHub/webizing-td/ipfs-starage/peer12:/data/textile
-#
-#    ports:
-#      - 4121:4001
-#      - 8201:8081
-#      - 5170:5050
-#      - "127.0.0.1:41800:40600"
-#
-#    networks:
-#      - textile
+      
+  peer4:
+   image: textile/go-textile:latest
+   container_name: peer4
+
+   volumes:
+     - /home/alexander/GitHub/webizing-td/ipfs-starage/peer4:/data/textile
+
+   ports:
+     - 4041:4001
+     - 8121:8081
+     - 5090:5050
+     - "127.0.0.1:41000:40600"
+
+   networks:
+     - textile
+
+  peer5:
+   image: textile/go-textile:latest
+   container_name: peer5
+
+   volumes:
+     - /home/alexander/GitHub/webizing-td/ipfs-starage/peer5:/data/textile
+
+   ports:
+     - 4051:4001
+     - 8131:8081
+     - 5100:5050
+     - "127.0.0.1:41100:40600"
+
+   networks:
+     - textile
+
+  peer6:
+   image: textile/go-textile:latest
+   container_name: peer6
+
+   volumes:
+     - /home/alexander/GitHub/webizing-td/ipfs-starage/peer6:/data/textile
+
+   ports:
+     - 4061:4001
+     - 8141:8081
+     - 5110:5050
+     - "127.0.0.1:41200:40600"
+
+   networks:
+     - textile
+
+  peer7:
+   image: textile/go-textile:latest
+   container_name: peer7
+
+   volumes:
+     - /home/alexander/GitHub/webizing-td/ipfs-starage/peer7:/data/textile
+
+   ports:
+     - 4071:4001
+     - 8151:8081
+     - 5120:5050
+     - "127.0.0.1:41300:40600"
+
+   networks:
+     - textile
+
+  peer8:
+   image: textile/go-textile:latest
+   container_name: peer8
+
+   volumes:
+     - /home/alexander/GitHub/webizing-td/ipfs-starage/peer8:/data/textile
+
+   ports:
+     - 4081:4001
+     - 8161:8081
+     - 5130:5050
+     - "127.0.0.1:41400:40600"
+
+   networks:
+     - textile
+
+  peer9:
+   image: textile/go-textile:latest
+   container_name: peer9
+
+   volumes:
+     - /home/alexander/GitHub/webizing-td/ipfs-starage/peer9:/data/textile
+
+   ports:
+     - 4091:4001
+     - 8171:8081
+     - 5140:5050
+     - "127.0.0.1:41500:40600"
+
+   networks:
+     - textile
+
+  peer10:
+   image: textile/go-textile:latest
+   container_name: peer10
+
+   volumes:
+     - /home/alexander/GitHub/webizing-td/ipfs-starage/peer10:/data/textile
+
+   ports:
+     - 4101:4001
+     - 8181:8081
+     - 5150:5050
+     - "127.0.0.1:41600:40600"
+
+   networks:
+     - textile
+
+  peer11:
+   image: textile/go-textile:latest
+   container_name: peer11
+
+   volumes:
+     - /home/alexander/GitHub/webizing-td/ipfs-starage/peer11:/data/textile
+
+   ports:
+     - 4111:4001
+     - 8191:8081
+     - 5160:5050
+     - "127.0.0.1:41700:40600"
+
+   networks:
+     - textile
+
+  peer12:
+   image: textile/go-textile:latest
+   container_name: peer12
+
+   volumes:
+     - /home/alexander/GitHub/webizing-td/ipfs-starage/peer12:/data/textile
+
+   ports:
+     - 4121:4001
+     - 8201:8081
+     - 5170:5050
+     - "127.0.0.1:41800:40600"
+
+   networks:
+     - textile

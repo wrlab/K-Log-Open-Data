@@ -14,62 +14,62 @@ const smartTableSchema = require('../schemas/SmartTable');
 const threadConfig = require('../config.json');
 
 // Or, create an instance specifying your custom Textile node API connection
-const textile = new Textile({
+const textileAirQuality = new Textile({
     url: "http://127.0.0.1",
     port: 40600,
 });
 
-const textile2 = new Textile({
+const textileCushion = new Textile({
     url: "http://127.0.0.1",
     port: 40700,
 });
 
-const textile3 = new Textile({
+const textileEnergyAppMonitor = new Textile({
     url: "http://127.0.0.1",
     port: 40800,
 });
 
-const textile4 = new Textile({
+const textileEnergyMonitor = new Textile({
     url: "http://127.0.0.1",
     port: 40900,
 });
 
-const textile5 = new Textile({
+const textileIPCamera = new Textile({
     url: "http://127.0.0.1",
     port: 41000,
 });
 
-const textile6 = new Textile({
+const textileIPFSCamera = new Textile({
     url: "http://127.0.0.1",
     port: 41100,
 });
 
-const textile7 = new Textile({
+const textileSmartTable = new Textile({
     url: "http://127.0.0.1",
     port: 41200,
 });
 
-const textile8 = new Textile({
+const textileSleep = new Textile({
     url: "http://127.0.0.1",
     port: 41300,
 });
 
-const textile9 = new Textile({
+const textileHeartRate = new Textile({
     url: "http://127.0.0.1",
     port: 41400,
 });
 
-const textile10 = new Textile({
+const textileStandHour = new Textile({
     url: "http://127.0.0.1",
     port: 41500,
 });
 
-const textile11 = new Textile({
+const textileStepCount = new Textile({
     url: "http://127.0.0.1",
     port: 41600,
 });
 
-const textile12 = new Textile({
+const textileExerciseTime = new Textile({
     url: "http://127.0.0.1",
     port: 41700,
 });
@@ -83,17 +83,23 @@ const IP_CAMERA = "ip-camera";
 const IPFS_CAMERA = "ipfs-camera";
 const SMART_TABLE = "smart-table";
 
+const SLEEP = "sleep";
+const HEART_RATE = "heart-rate";
+const STAND_HOUR = "stand-hour";
+const STEP_COUNT = "step-count";
+const EXERCISE_TIME = "exercise-time";
+
 // The root provides a resolver function for each API endpoint
 const root = {
     airQuality: async ({names}) => {
         const LIMIT = 1000;
         let data = [];
         try {
-            const list = await textile.files.list(threadConfig[AIR_QUALITY].id, "", LIMIT);
+            const list = await textileAirQuality.files.list(threadConfig[AIR_QUALITY].id, "", LIMIT);
 
             if (list !== undefined) {
                 for await (let item of list.items) {
-                    const buf = await textile.blocks.fileContent(item.block);
+                    const buf = await textileAirQuality.blocks.fileContent(item.block);
                     const str = String.fromCharCode.apply(null, new Uint8Array(buf));
                     data.push(JSON.parse(str))
                 }
@@ -136,11 +142,11 @@ const root = {
         const LIMIT = 1000;
         let data = [];
         try {
-            const list = await textile.files.list(threadConfig[AIR_QUALITY].id, "", LIMIT);
+            const list = await textileAirQuality.files.list(threadConfig[AIR_QUALITY].id, "", LIMIT);
 
             if (list !== undefined) {
                 for await (let item of list.items) {
-                    const buf = await textile.blocks.fileContent(item.block);
+                    const buf = await textileAirQuality.blocks.fileContent(item.block);
                     const str = String.fromCharCode.apply(null, new Uint8Array(buf));
                     data.push(JSON.parse(str))
                 }
@@ -182,11 +188,11 @@ const root = {
         const LIMIT = 1000;
         let data = [];
         try {
-            const list = await textile2.files.list(threadConfig[CUSHION].id, "", LIMIT);
+            const list = await textileCushion.files.list(threadConfig[CUSHION].id, "", LIMIT);
 
             if (list !== undefined) {
                 for await (let item of list.items) {
-                    const buf = await textile2.blocks.fileContent(item.block);
+                    const buf = await textileCushion.blocks.fileContent(item.block);
                     const str = String.fromCharCode.apply(null, new Uint8Array(buf));
                     data.push(JSON.parse(str))
                 }
@@ -204,11 +210,11 @@ const root = {
         const LIMIT = 1000;
         let data = [];
         try {
-            const list = await textile2.files.list(threadConfig[CUSHION].id, "", LIMIT);
+            const list = await textileCushion.files.list(threadConfig[CUSHION].id, "", LIMIT);
 
             if (list !== undefined) {
                 for await (let item of list.items) {
-                    const buf = await textile2.blocks.fileContent(item.block);
+                    const buf = await textileCushion.blocks.fileContent(item.block);
                     const str = String.fromCharCode.apply(null, new Uint8Array(buf));
                     data.push(JSON.parse(str))
                 }
@@ -227,11 +233,11 @@ const root = {
         const LIMIT = 1000;
         let data = [];
         try {
-            const list = await textile3.files.list(threadConfig[ENERGY_MONITOR].id, "", LIMIT);
+            const list = await textileEnergyMonitor.files.list(threadConfig[ENERGY_MONITOR].id, "", LIMIT);
 
             if (list !== undefined) {
                 for await (let item of list.items) {
-                    const buf = await textile3.blocks.fileContent(item.block);
+                    const buf = await textileEnergyMonitor.blocks.fileContent(item.block);
                     const str = String.fromCharCode.apply(null, new Uint8Array(buf));
                     data.push(JSON.parse(str))
                 }
@@ -253,11 +259,11 @@ const root = {
         const LIMIT = 1000;
         let data = [];
         try {
-            const list = await textile4.files.list(threadConfig[ENERGY_MONITOR].id, "", LIMIT);
+            const list = await textileEnergyMonitor.files.list(threadConfig[ENERGY_MONITOR].id, "", LIMIT);
 
             if (list !== undefined) {
                 for await (let item of list.items) {
-                    const buf = await textile4.blocks.fileContent(item.block);
+                    const buf = await textileEnergyMonitor.blocks.fileContent(item.block);
                     const str = String.fromCharCode.apply(null, new Uint8Array(buf));
                     data.push(JSON.parse(str))
                 }
@@ -280,7 +286,7 @@ const root = {
         const LIMIT = 1000;
         let data = [];
         try {
-            const list = await textile5.files.list(threadConfig[ENERGY_APPLIANCE_MONITOR].id, "", LIMIT);
+            const list = await textileEnergyAppMonitor.files.list(threadConfig[ENERGY_APPLIANCE_MONITOR].id, "", LIMIT);
 
             if (list !== undefined) {
                 for await (let item of list.items) {
@@ -303,18 +309,31 @@ const root = {
         return data[0]
     },
     sleep: async ({ name, startDate, endDate }) => {
-        const client = await MongoClient.connect('mongodb://localhost:27017', { useNewUrlParser: true });
+        const LIMIT = 1000;
+        let data = [];
+        try {
+            const list = await textileSleep.files.list(threadConfig[SLEEP].id, "", LIMIT);
 
-        const db = client.db('k-log-iot');
+            if (list !== undefined) {
+                for await (let item of list.items) {
+                    const buf = await textileSleep.blocks.fileContent(item.block);
+                    const str = String.fromCharCode.apply(null, new Uint8Array(buf));
+                    data.push(JSON.parse(str))
+                }
+            }
+        }catch (e) {
+            if(e.message === "Not Found") {
+                console.log("airQuality not found")
+            }
+        }
 
         // const startDate = "2019-05-21T14:03:00Z";
         // const endDate = "2019-05-21T14:03:00Z";
 
-        const docs = await db.collection(constants.SLEEP).find({name: name}).toArray();
 
-        const filteredDocs = docs.filter((item) => {
-            return new Date(startDate) <= new Date(item.startDate) && new Date(item.endDate) <= new Date(endDate);
-        });
+        // const filteredDocs = data.filter((item) => {
+        //     return new Date(startDate) <= new Date(item.startDate) && new Date(item.endDate) <= new Date(endDate);
+        // });
 
         const output =  {
             "name": name ? name : 'smartWatch01',
@@ -322,7 +341,7 @@ const root = {
             "address": "kist-l1",
             "room": "L8321",
             "location": "On the table",
-            "sleepAnalysis": filteredDocs
+            "sleepAnalysis": data
         };
 
         return output;
@@ -342,27 +361,95 @@ const root = {
         }
     },
     smartWatch: async ({ name, startDate, endDate }) => {
-        const client = await MongoClient.connect('mongodb://localhost:27017', { useNewUrlParser: true });
+        const LIMIT = 1000;
+        let stepCount = [];
+        try {
+            const list = await textileStepCount.files.list(threadConfig[HEA].id, "", LIMIT);
 
-        const db = client.db('k-log-iot');
+            if (list !== undefined) {
+                for await (let item of list.items) {
+                    const buf = await textileStepCount.blocks.fileContent(item.block);
+                    const str = String.fromCharCode.apply(null, new Uint8Array(buf));
+                    stepCount.push(JSON.parse(str))
+                }
+            }
+        }catch (e) {
+            if(e.message === "Not Found") {
+                console.log("stepCount not found")
+            }
+        }
 
-        const docsExT = await db.collection(constants.EXERCISE_TIME).find({name: name}).toArray();
-        const docsSH = await db.collection(constants.STAND_HOUR).find({name: name}).toArray();
-        const docsSC = await db.collection(constants.STEP_COUNT).find({name: name}).toArray();
-        const docsHR = await db.collection(constants.HEART_RATE).find({name: name}).toArray();
+        let heartRate = [];
+        try {
+            const list = await textileHeartRate.files.list(threadConfig[SLEEP].id, "", LIMIT);
 
-        const filteredDocsExT= docsExT.filter((item) => {
-            return new Date(startDate) <= new Date(item.startDate) && new Date(item.endDate) <= new Date(endDate);
-        });
-        const filteredDocsSH= docsSH.filter((item) => {
-            return new Date(startDate) <= new Date(item.startDate) && new Date(item.endDate) <= new Date(endDate);
-        });
-        const filteredDocsSC= docsSC.filter((item) => {
-            return new Date(startDate) <= new Date(item.startDate) && new Date(item.endDate) <= new Date(endDate);
-        });
-        const filteredDocsHR= docsHR.filter((item) => {
-            return new Date(startDate) <= new Date(item.startDate) && new Date(item.endDate) <= new Date(endDate);
-        });
+            if (list !== undefined) {
+                for await (let item of list.items) {
+                    const buf = await textileHeartRate.blocks.fileContent(item.block);
+                    const str = String.fromCharCode.apply(null, new Uint8Array(buf));
+                    heartRate.push(JSON.parse(str))
+                }
+            }
+        }catch (e) {
+            if(e.message === "Not Found") {
+                console.log("heartRate not found")
+            }
+        }
+
+        let standHour = [];
+        try {
+            const list = await textileStandHour.files.list(threadConfig[SLEEP].id, "", LIMIT);
+
+            if (list !== undefined) {
+                for await (let item of list.items) {
+                    const buf = await textileStandHour.blocks.fileContent(item.block);
+                    const str = String.fromCharCode.apply(null, new Uint8Array(buf));
+                    standHour.push(JSON.parse(str))
+                }
+            }
+        }catch (e) {
+            if(e.message === "Not Found") {
+                console.log("standHour not found")
+            }
+        }
+
+        let exerciseTime = [];
+        try {
+            const list = await textileExerciseTime.files.list(threadConfig[SLEEP].id, "", LIMIT);
+
+            if (list !== undefined) {
+                for await (let item of list.items) {
+                    const buf = await textileExerciseTime.blocks.fileContent(item.block);
+                    const str = String.fromCharCode.apply(null, new Uint8Array(buf));
+                    exerciseTime.push(JSON.parse(str))
+                }
+            }
+        }catch (e) {
+            if(e.message === "Not Found") {
+                console.log("exerciseTime not found")
+            }
+        }
+        // const client = await MongoClient.connect('mongodb://localhost:27017', { useNewUrlParser: true });
+
+        // const db = client.db('k-log-iot');
+
+        // const docsExT = await db.collection(constants.EXERCISE_TIME).find({name: name}).toArray();
+        // const docsSH = await db.collection(constants.STAND_HOUR).find({name: name}).toArray();
+        // const docsSC = await db.collection(constants.STEP_COUNT).find({name: name}).toArray();
+        // const docsHR = await db.collection(constants.HEART_RATE).find({name: name}).toArray();
+
+        // const filteredDocsExT= docsExT.filter((item) => {
+        //     return new Date(startDate) <= new Date(item.startDate) && new Date(item.endDate) <= new Date(endDate);
+        // });
+        // const filteredDocsSH= docsSH.filter((item) => {
+        //     return new Date(startDate) <= new Date(item.startDate) && new Date(item.endDate) <= new Date(endDate);
+        // });
+        // const filteredDocsSC= docsSC.filter((item) => {
+        //     return new Date(startDate) <= new Date(item.startDate) && new Date(item.endDate) <= new Date(endDate);
+        // });
+        // const filteredDocsHR= docsHR.filter((item) => {
+        //     return new Date(startDate) <= new Date(item.startDate) && new Date(item.endDate) <= new Date(endDate);
+        // });
 
         return {
             "name": name ? name : 'smartWatch01',
@@ -370,21 +457,21 @@ const root = {
             "address": "kist-l1",
             "room": "L8321",
             "location": "On the table",
-            "stepCount": filteredDocsSC,
-            "heartRate":  filteredDocsHR,
-            "exerciseTime": filteredDocsExT,
-            "standHour": filteredDocsSH
+            "stepCount": stepCount,
+            "heartRate":  heartRate,
+            "exerciseTime": exerciseTime,
+            "standHour": standHour
         }
     },
     ipCamera: async () => {
         const LIMIT = 1000;
         let data = [];
         try {
-            const list = await textile6.files.list(threadConfig[IP_CAMERA].id, "", LIMIT);
+            const list = await textileIPCamera.files.list(threadConfig[IP_CAMERA].id, "", LIMIT);
 
             if (list !== undefined) {
                 for await (let item of list.items) {
-                    const buf = await textile6.blocks.fileContent(item.block);
+                    const buf = await textileIPCamera.blocks.fileContent(item.block);
                     const str = String.fromCharCode.apply(null, new Uint8Array(buf));
                     data.push(JSON.parse(str))
                 }
@@ -406,11 +493,11 @@ const root = {
         const LIMIT = 1000;
         let data = [];
         try {
-            const list = await textile7.files.list(threadConfig[IPFS_CAMERA].id, "", LIMIT);
+            const list = await textileIPFSCamera.files.list(threadConfig[IPFS_CAMERA].id, "", LIMIT);
 
             if (list !== undefined) {
                 for await (let item of list.items) {
-                    const buf = await textile7.blocks.fileContent(item.block);
+                    const buf = await textileIPFSCamera.blocks.fileContent(item.block);
                     const str = String.fromCharCode.apply(null, new Uint8Array(buf));
                     data.push(JSON.parse(str))
                 }

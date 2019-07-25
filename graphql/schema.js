@@ -18,8 +18,6 @@ const schema = buildSchema(`
   },
   
   type Cushion {
-    _id: String,
-    _index: String,
     name: String,
     user: String,
     address: String,
@@ -43,8 +41,6 @@ const schema = buildSchema(`
   },
   
   type EnergyMonitor {
-    _id: String,
-    _index: String,
     name: String,
     user: String,
     address: String,
@@ -56,8 +52,6 @@ const schema = buildSchema(`
   },
   
   type Sleep {
-    _id: String,
-    _index: String,
     name: String,
     user: String,
     address: String,
@@ -67,8 +61,6 @@ const schema = buildSchema(`
   },
   
   type SmartTable {
-    _id: String,
-    _index: String,
     name: String,
     user: String,
     address: String,
@@ -81,43 +73,36 @@ const schema = buildSchema(`
   },
   
   type StepCount {
-    _id: String,
     startDate: String,
     endDate: String, 
     stepCount: Int, 
   }
   
   type SleepAnalysis {
-    _id: String,
     startDate: String,
     endDate: String, 
     status: String, 
   }
   
   type ExerciseTime {
-    _id: String,
     startDate: String,
     endDate: String, 
     exerciseTime: Int, 
   }
   
   type HeartRate {
-    _id: String,
     startDate: String,
     endDate: String, 
     heartRate: Int, 
   }
   
   type StandHour {
-   _id: String,
     startDate: String,
     endDate: String, 
     standHour: Float, 
   }
   
   type SmartWatch {
-    _id: String,
-    _index: String,
     name: String,
     user: String,
     address: String,
@@ -130,8 +115,6 @@ const schema = buildSchema(`
   },
   
   type IPCamera {
-    _id: String,
-    _index: String,
     name: String,
     user: String,
     address: String,
@@ -142,8 +125,6 @@ const schema = buildSchema(`
   },
   
   type IPFSCamera {
-    _id: String,
-    _index: String,
     name: String,
     user: String,
     address: String,

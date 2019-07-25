@@ -1,1 +1,62 @@
-{"air-quality":{"id":"12D3KooWNYw8JZ1UBjD5mvZJBtxpGd5t9WD351A8vjXL6xrKgkiG","key":"1ORblfJl90Qs4zm22WvGYq5k3kE"},"cushion":{"id":"12D3KooWJQViDYVih7DtjYZri7t9zzm2MSyMwKUPaGKo4T8nHWQ7","key":"1ORblgpCUUSVipLTUqUunZpVxft"},"energy-appliance-monitor":{"id":"12D3KooWSjrAXUQTzYoiQsPMWMvmbrMGY2XwPr9VN1hSKzqGcMDz","key":"1ORblnVhwnS8NASjpCYtv9u3PjR"},"energy-monitor":{"id":"12D3KooWEpLFjg1u9pMNSbunFKLQrouPDoxAnuHDCkp5tfrcmbWH","key":"1ORblntFn6yeWCa5VThew5ognYX"},"ip-camera":{"id":"12D3KooWNT57FEZXwPoysuCgEdK83CKH43Yuq4E7uKEH7ARuTSmz","key":"1ORblyEn87E1lT4iCr8BbiYSc6Y"},"ipfs-camera":{"id":"12D3KooWAxtPvSL1an5igypY7tD7VvwQQzsvxfxmTYAMyUrxEJfK","key":"1ORbls4qDRMaQgVw0hclnw89Ill"},"smart-table":{"id":"12D3KooWHZnXCQfYK6YdR6627KvMJEQhy7bJjgY1p2YGnK7feZhj","key":"1ORbmKPkmNgF6REZOFSiu44HwXz"},"sleep":{"id":"12D3KooWCiXDh3ouretZvSRj8dEcNzSzQEmrnPidyyWxmGSHsSe4","key":"1ORbmX0UojWtGJ9I5COcmZPoBUF"},"heart-rate":{"id":"12D3KooWLDKRLniLavd31N1HVjix7dSxqAWGpFmwfogBnjoe3c2y","key":"1ORbmhRWbXLSIMK3fF2evAmbJdd"},"stand-hour":{"id":"12D3KooWFvrwSp9qbs8Pa18naWS7YSxAJx1AYaUQ5ckpYxFstAhg","key":"1ORbmsk0J9j6lb2XaG1NGe7hbAu"},"step-count":{"id":"12D3KooWMJnj4eTiNAnzRJphsnUA9wR84rwtAp1wBCSsfTRbZpBv","key":"1ORbmyG5Jwe2wbHPpkxqGNj8GOZ"},"exercise-time":{"id":"12D3KooWJZ7ZCQaWuSZeHDGtTeNqQaMp6fnZyzfw4YG4T5y9z8By","key":"1ORbn5Xx5xc916tpsm1IpydNCSp"}}
+{
+  "air-quality": {
+    "id": "12D3KooWJEWiZQX1YTxPnBZWophzDY6ZVYjhr2JrSxDoi2zbWCt4",
+    "key": "1ORyKbHOcD1PrWJjCUdUBUlLwx8",
+    "address": "P8gwjLpoNNmUG9fEeBavMhMdXwuFKRX3WiyCu4cGEp7Ys6re"
+  },
+  "cushion": {
+    "id": "12D3KooWRS4VMonEFnzTEe97itTmaiKVVTksMSyBkhcG8pmD81bU",
+    "key": "1ORyKdii5iGUx7b4VAv7frQSVl6",
+    "address": "P6qz2UfEaDbj4z1JgkypRcYzohDVe1bUdasUNLG3cHmFocwF"
+  },
+  "energy-appliance-monitor": {
+    "id": "12D3KooWFP2fdRhzPpEAUXBjHHKNupwhgWj9TSEe11Svk2aq9fpt",
+    "key": "1ORyKeu7zMwFXg25PIVoTfUZyu9",
+    "address": "P4zpKz67NeKTkVXaJhBmHjQrw9fsFPCN2GuRayRx8Ag2D6hs"
+  },
+  "energy-monitor": {
+    "id": "12D3KooWJy2pHan5hT6DJzLbo6js4eitC1u4Zzcxq6UtGauX1RpP",
+    "key": "1ORyKag0hDpdENuQU9AHdAhtsjf",
+    "address": "P4wfRYeSwbmyZEXYkzPFWcceqaD82ZKHRCohL3iVxrD1HoXb"
+  },
+  "ip-camera": {
+    "id": "12D3KooWCNB8AH9VGyBLGqymYtRNUTzUmVTztmxutrjYdtFyaAJn",
+    "key": "1ORyKhsmQBSp6PIzHk9EN6aCNO1",
+    "address": "P6zb54EVNhPono7sBZihaV8qTF4YkAFhJKyxMjVV7Bu9bMyy"
+  },
+  "ipfs-camera": {
+    "id": "12D3KooWCUq4CmG28xFJr4F6ZxVwM1PCmeTCqJnPP5KpGuFKivMa",
+    "key": "1ORyKguvPzOnN4JB5UN4RdhoXSh",
+    "address": "P7tyHBy8M23Y1WhUBP3FD9smiG9cQrZFMCyiuqdrbgZMDnUS"
+  },
+  "smart-table": {
+    "id": "12D3KooWKDF5eekxLfj6phggZimAjkv9WgAgpwZgsgM6GZRh3htr",
+    "key": "1ORyKhZj7AYC454zls9tbbPnebU",
+    "address": "P7itgFoQYtf6PKPDK6WznD4gwkWuNcezuvvgvTtXVMDwMjUv"
+  },
+  "sleep": {
+    "id": "12D3KooWDokBikPGs6bsws991D5YoDEv5mjFGuAUbjqcwPWdCjY6",
+    "key": "1ORyKhi9hz30BeqpGJHVnD4VOxf",
+    "address": "P4LcQ47CPwUW6UD3fuYM9Yk2Z2uYPx3LZvEK8v4h7Y5mTiXf"
+  },
+  "heart-rate": {
+    "id": "12D3KooWNTsQWSHJb5ABd2jHRHxH1wNnz8Ra7bJGUbGs1SmBfzF5",
+    "key": "1ORyKoSaYdrIL2fWV8rGSoxbCc2",
+    "address": "P7dZ6wkTTvgixaVM81osrpDo9pCHNpEJbpATNKZ2PqqccnAe"
+  },
+  "stand-hour": {
+    "id": "12D3KooWBc99VJ5MF32amwT5ugYSHi1yoC7JLsAet2CdC39NRhho",
+    "key": "1ORyKnKONtoasRItkbjTEosSFtt",
+    "address": "P6s4uEbWYSoFDX93fTQUEULbRN6GBSHZpyYmFzLTAGzfGnGv"
+  },
+  "step-count": {
+    "id": "12D3KooWB3KcQNxVPmLcyJzKT2VXsKQhUrHK7MnjY2VbMTqupMGW",
+    "key": "1ORyKqSDpFMU68t8R7Jn6TP21E2",
+    "address": "P4ZaeGhqGQ79MUzDULeWAsvWU7CBdes3brbhNvFUj4okbBZ9"
+  },
+  "exercise-time": {
+    "id": "12D3KooWAV4wZSTjT9K7cZJpTZ7QbTqAm9WGxTz8NnqzTTk5EELd",
+    "key": "1ORyKrUJGPFosIwrNGNpsZm38sI",
+    "address": "P5ca87mSBWw1m9vFF2CNoheXX4RNugRekvamodWLjuc7ccoT"
+  }
+}
