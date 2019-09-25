@@ -26,6 +26,8 @@ const smartWatch = require('./routes/td/smart-watch');
 
 const smartWatchRouter = require('./routes/smart-watch');
 
+const pinningRouter = require('./routes/pinning');
+
 const app = express();
 const cors = require('cors');
 
@@ -47,6 +49,7 @@ app.use('/graphql', graphqlHTTP({
   graphiql: true,
 }));
 
+app.use('/pinning', pinningRouter);
 app.use('/textile', textileRouter);
 app.use('/td', indexRouter);
 app.use('/td/airquality', airQuality);

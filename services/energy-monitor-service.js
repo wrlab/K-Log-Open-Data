@@ -26,7 +26,7 @@ function queryEnergyMonitor(fn) {
             "alwaysOn": output.alwaysOn,
             "solar": output.solar
         };
-        await fn(dataConsumption);
+        fn(dataConsumption);
     });
 }
 

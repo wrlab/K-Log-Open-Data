@@ -7,12 +7,17 @@ const constants = require('../constants');
 
 const MongoClient = require('mongodb').MongoClient;
 
+const ipfsClient = require('ipfs-http-client');
+
+// connect to ipfs daemon API server
+const ipfs = ipfsClient('localhost', '5001', { protocol: 'http' });
+
 
 router.get('/heart-rate', async (req,res) => {
-    MongoClient.connect('mongodb://localhost:27017/k-log-iot', { useNewUrlParser: true }, function (err, client) {
+    MongoClient.connect(constants.MONGODB_URL, { useNewUrlParser: true }, function (err, client) {
         if (err) throw err;
 
-        const db = client.db('k-log-iot');
+        const db = client.db(constants.MONGODB_NAME);
 
         const output = db.collection(constants.HEART_RATE).find({user: 'alex'}).sort({startDate: -1}).limit(1).toArray(function(err, docs) {
             client.close();
@@ -27,22 +32,44 @@ router.get('/heart-rate', async (req,res) => {
 });
 
 router.post('/heart-rate', async (req, res) => {
-    MongoClient.connect('mongodb://localhost:27017', { useNewUrlParser: true }, async function (err, client) {
-        const db = client.db('k-log-iot');
+    const content = req.body.data || undefined;
+
+    const ipfsData = [];
+
+    for await (let item of content) {
+        // convert JSON object to String
+        const jsonStr = JSON.stringify(item);
+
+        // read json string to Buffer
+        const buf = Buffer.from(jsonStr);
+
+        let bufRes = undefined;
+
+        try {
+            bufRes = await ipfs.add(buf);
+            console.log(bufRes);
+            ipfsData.push({hash: bufRes[0].hash, metadata: {
+                    type: item.type,
+                    name: item.name,
+                    user: item.user,
+                    startDate: item.startDate,
+                    endDate: item.endDate
+                }});
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    MongoClient.connect(constants.MONGODB_URL, { useNewUrlParser: true }, async function (err, client) {
+        const db = client.db(constants.MONGODB_NAME);
 
         let bulk = [];
 
-        for (let item of req.body.data) {
-            const data = {
-                "type": item.type,
-                "name": item.name,
-                "user": item.user,
-                "startDate": item.startDate,
-                "endDate": item.endDate,
-                "heartRate": item.heartRate
-            };
+        for (let item of ipfsData) {
 
-            bulk.push(data);
+            const doc = { metadata: item.metadata, options: { cidVersion: 1 }, hash: item.hash };
+
+            bulk.push(doc);
         }
 
         const resQuery = await db.collection(constants.HEART_RATE).insertMany(bulk);
@@ -52,10 +79,10 @@ router.post('/heart-rate', async (req, res) => {
 });
 
 router.get('/step-count', async (req,res) => {
-    MongoClient.connect('mongodb://localhost:27017/k-log-iot', { useNewUrlParser: true }, function (err, client) {
+    MongoClient.connect(constants.MONGODB_URL, { useNewUrlParser: true }, function (err, client) {
         if (err) throw err;
 
-        const db = client.db('k-log-iot');
+        const db = client.db(constants.MONGODB_NAME);
 
         const output = db.collection(constants.STEP_COUNT).find({user: 'alex'}).sort({startDate: -1}).limit(1).toArray(function(err, docs) {
             client.close();
@@ -70,80 +97,128 @@ router.get('/step-count', async (req,res) => {
 });
 
 router.post('/step-count', async (req, res) => {
-    MongoClient.connect('mongodb://localhost:27017/k-log-iot', { useNewUrlParser: true }, async function (err, client) {
-        const db = client.db('k-log-iot');
+    const content = req.body.data || undefined;
+
+    const ipfsData = [];
+
+    for await (let item of content) {
+        // convert JSON object to String
+        const jsonStr = JSON.stringify(item);
+
+        // read json string to Buffer
+        const buf = Buffer.from(jsonStr);
+
+        let bufRes = undefined;
+
+        try {
+            bufRes = await ipfs.add(buf);
+            console.log(bufRes);
+            ipfsData.push({hash: bufRes[0].hash, metadata: {
+                    type: item.type,
+                    name: item.name,
+                    user: item.user,
+                    startDate: item.startDate,
+                    endDate: item.endDate
+                }});
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    MongoClient.connect(constants.MONGODB_URL, { useNewUrlParser: true }, async function (err, client) {
+        const db = client.db(constants.MONGODB_NAME);
 
         let bulk = [];
 
-        for (let item of req.body.data) {
-            const data = {
-                "type": item.type,
-                "name": item.name,
-                "user": item.user,
-                "startDate": item.startDate,
-                "endDate": item.endDate,
-                "stepCount": item.stepCount
-            };
+        for (let item of ipfsData) {
 
-            bulk.push(data);
+            const doc = { metadata: item.metadata, options: { cidVersion: 1 }, hash: item.hash };
+
+            bulk.push(doc);
         }
 
         const resQuery = await db.collection(constants.STEP_COUNT).insertMany(bulk);
 
-        res.status(201).send(resQuery.ops)
+        res.status(201).send(resQuery.ops);
     });
 });
 
 
 router.get('/exercise-time', async (req,res) => {
-    MongoClient.connect('mongodb://localhost:27017/k-log-iot', { useNewUrlParser: true }, function (err, client) {
+    MongoClient.connect(constants.MONGODB_URL, { useNewUrlParser: true }, function (err, client) {
         if (err) throw err;
 
-        const db = client.db('k-log-iot');
+        const db = client.db(constants.MONGODB_NAME);
 
-        const output = db.collection(constants.EXERCISE_TIME).find({user: 'alex'}).sort({startDate: -1}).limit(1).toArray(function(err, docs) {
-            client.close();
+        try {
+            const output = db.collection(constants.EXERCISE_TIME).find({user: 'alex'}).sort({startDate: -1}).limit(1).toArray(function(err, docs) {
+                client.close();
 
-            if(docs.length > 0) {
-                res.status(200).send(docs[0]);
-            } else {
-                res.status(204).send();
-            }
-        });
+                if(docs.length > 0) {
+                    res.status(200).send(docs[0]);
+                } else {
+                    res.status(204).send();
+                }
+            });
+        } catch (e) {
+            res.status(500).send();
+        }
+
     });
 });
 
 router.post('/exercise-time', async (req, res) => {
-    MongoClient.connect('mongodb://localhost:27017/k-log-iot', { useNewUrlParser: true }, async function (err, client) {
-        const db = client.db('k-log-iot');
+    const content = req.body.data || undefined;
+
+    const ipfsData = [];
+
+    for await (let item of content) {
+        // convert JSON object to String
+        const jsonStr = JSON.stringify(item);
+
+        // read json string to Buffer
+        const buf = Buffer.from(jsonStr);
+
+        let bufRes = undefined;
+
+        try {
+            bufRes = await ipfs.add(buf);
+            console.log(bufRes);
+            ipfsData.push({hash: bufRes[0].hash, metadata: {
+                    type: item.type,
+                    name: item.name,
+                    user: item.user,
+                    startDate: item.startDate,
+                    endDate: item.endDate
+                }});
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    MongoClient.connect(constants.MONGODB_URL, { useNewUrlParser: true }, async function (err, client) {
+        const db = client.db(constants.MONGODB_NAME);
 
         let bulk = [];
 
-        for (let item of req.body.data) {
-            const data = {
-                "type": item.type,
-                "name": item.name,
-                "user": item.user,
-                "startDate": item.startDate,
-                "endDate": item.endDate,
-                "exerciseTime": item.heartRate
-            };
+        for (let item of ipfsData) {
 
-            bulk.push(data);
+            const doc = { metadata: item.metadata, options: { cidVersion: 1 }, hash: item.hash };
+
+            bulk.push(doc);
         }
 
         const resQuery = await db.collection(constants.EXERCISE_TIME).insertMany(bulk);
 
-        res.status(201).send(resQuery.ops)
-
+        res.status(201).send(resQuery.ops);
     });
 });
 
 router.get('/sleep', async (req,res) => {
-    MongoClient.connect('mongodb://localhost:27017/k-log-iot', { useNewUrlParser: true }, function (err, client) {
+    MongoClient.connect(constants.MONGODB_URL, { useNewUrlParser: true }, function (err, client) {
         if (err) throw err;
 
-        const db = client.db('k-log-iot');
+        const db = client.db(constants.MONGODB_NAME);
 
         const output = db.collection(constants.SLEEP).find({user: 'alex'}).sort({startDate: -1}).limit(1).toArray(function(err, docs) {
             client.close();
@@ -158,22 +233,44 @@ router.get('/sleep', async (req,res) => {
 });
 
 router.post('/sleep', async (req, res) => {
-    MongoClient.connect('mongodb://localhost:27017/k-log-iot', { useNewUrlParser: true }, async function (err, client) {
-        const db = client.db('k-log-iot');
+    const content = req.body.data || undefined;
+
+    const ipfsData = [];
+
+    for await (let item of content) {
+        // convert JSON object to String
+        const jsonStr = JSON.stringify(item);
+
+        // read json string to Buffer
+        const buf = Buffer.from(jsonStr);
+
+        let bufRes = undefined;
+
+        try {
+            bufRes = await ipfs.add(buf);
+            console.log(bufRes);
+            ipfsData.push({hash: bufRes[0].hash, metadata: {
+                    type: item.type,
+                    name: item.name,
+                    user: item.user,
+                    startDate: item.startDate,
+                    endDate: item.endDate
+                }});
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    MongoClient.connect(constants.MONGODB_URL, { useNewUrlParser: true }, async function (err, client) {
+        const db = client.db(constants.MONGODB_NAME);
 
         let bulk = [];
 
-        for (let item of req.body.data) {
-            const data = {
-                "type": item.type,
-                "name": item.name,
-                "user": item.user,
-                "startDate": item.startDate,
-                "endDate": item.endDate,
-                "status": item.status,
-            };
+        for (let item of ipfsData) {
 
-            bulk.push(data);
+            const doc = { metadata: item.metadata, options: { cidVersion: 1 }, hash: item.hash };
+
+            bulk.push(doc);
         }
 
         const resQuery = await db.collection(constants.SLEEP).insertMany(bulk);
@@ -183,10 +280,10 @@ router.post('/sleep', async (req, res) => {
 });
 
 router.get('/stand-hour', async (req,res) => {
-    MongoClient.connect('mongodb://localhost:27017/k-log-iot', { useNewUrlParser: true }, function (err, client) {
+    MongoClient.connect(constants.MONGODB_URL, { useNewUrlParser: true }, function (err, client) {
         if (err) throw err;
 
-        const db = client.db('k-log-iot');
+        const db = client.db(constants.MONGODB_NAME);
 
         const output = db.collection(constants.EXERCISE_TIME).find({user: 'alex'}).sort({startDate: -1}).limit(1).toArray(function(err, docs) {
             client.close();
@@ -201,22 +298,44 @@ router.get('/stand-hour', async (req,res) => {
 });
 
 router.post('/stand-hour', async (req, res) => {
-    MongoClient.connect('mongodb://localhost:27017/k-log-iot', { useNewUrlParser: true }, async function (err, client) {
-        const db = client.db('k-log-iot');
+    const content = req.body.data || undefined;
+
+    const ipfsData = [];
+
+    for await (let item of content) {
+        // convert JSON object to String
+        const jsonStr = JSON.stringify(item);
+
+        // read json string to Buffer
+        const buf = Buffer.from(jsonStr);
+
+        let bufRes = undefined;
+
+        try {
+            bufRes = await ipfs.add(buf);
+            console.log(bufRes);
+            ipfsData.push({hash: bufRes[0].hash, metadata: {
+                    type: item.type,
+                    name: item.name,
+                    user: item.user,
+                    startDate: item.startDate,
+                    endDate: item.endDate
+                }});
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    MongoClient.connect(constants.MONGODB_URL, { useNewUrlParser: true }, async function (err, client) {
+        const db = client.db(constants.MONGODB_NAME);
 
         let bulk = [];
 
-        for (let item of req.body.data) {
-            const data = {
-                "type": item.type,
-                "name": item.name,
-                "user": item.user,
-                "startDate": item.startDate,
-                "endDate": item.endDate,
-                "standHour": item.standHour
-            };
+        for (let item of ipfsData) {
 
-            bulk.push(data);
+            const doc = { metadata: item.metadata, options: { cidVersion: 1 }, hash: item.hash };
+
+            bulk.push(doc);
         }
 
         const resQuery = await db.collection(constants.STAND_HOUR).insertMany(bulk);

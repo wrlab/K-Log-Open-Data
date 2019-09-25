@@ -126,7 +126,7 @@ async function queryLatestDataForEveryFoobot(fn) {
                 "pollution": foobo.datapoints[0][6]
             };
             console.log(dataAirQuality);
-            await fn(dataAirQuality);
+            fn(dataAirQuality);
         } catch (err) {
             console.error(`Fetching devices info failure:\nUUID: ${item.uuid}\n${err}\n`);
             return;
