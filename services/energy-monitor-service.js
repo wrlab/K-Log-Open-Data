@@ -15,6 +15,7 @@ const smappee = new SmappeeAPI({
 function queryEnergyMonitor(fn) {
     //"26636": livinglab ID
     smappee.getLatestConsumption("26636", async function (output) {
+        console.log(output)
         let dataConsumption = {
             "name": "Smappee00",
             "address": "Seoul, Seongbuk-gu, Wolgok 2(i)-dong, 화랑로 14길 5, Laboratory 8",

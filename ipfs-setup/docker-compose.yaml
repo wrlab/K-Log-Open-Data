@@ -1,0 +1,101 @@
+# Copyright IBM Corp. All Rights Reserved.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+version: '2'
+
+networks:
+  textile:
+
+services:
+  peer0:
+    image: ipfs/go-ipfs:latest
+    container_name: peer0
+
+    volumes:
+      - ./ipfs-starage/peer0:/data/ipfs
+
+    ports:
+      - "5001:5001"
+      - "4001:4001"
+      - "8080:8080"
+
+    networks:
+      - textile
+
+  peer1:
+    image: ipfs/go-ipfs:latest
+    container_name: peer1
+
+    volumes:
+      - ./ipfs-starage/peer1:/data/ipfs
+
+    ports:
+      - "5011:5001"
+      - "4011:4001"
+      - "8090:8080"
+
+    networks:
+      - textile
+
+  peer2:
+    image: ipfs/go-ipfs:latest
+    container_name: peer2
+
+    volumes:
+      - ./ipfs-starage/peer2:/data/ipfs
+
+    ports:
+      - "5021:5001"
+      - "4021:4001"
+      - "8100:8080"
+
+    networks:
+      - textile
+
+  peer3:
+    image: ipfs/go-ipfs:latest
+    container_name: peer3
+
+    volumes:
+      - ./ipfs-starage/peer3:/data/ipfs
+
+    ports:
+      - "5031:5001"
+      - "4031:4001"
+      - "8110:8080"
+
+    networks:
+      - textile
+
+  peer4:
+    image: ipfs/go-ipfs:latest
+    container_name: peer4
+
+    volumes:
+      - ./ipfs-starage/peer4:/data/ipfs
+
+    ports:
+      - "5041:5001"
+      - "4041:4001"
+      - "8120:8080"
+
+    networks:
+      - textile
+
+  peer5:
+    image: ipfs/go-ipfs:latest
+    container_name: peer5
+
+    volumes:
+      - ./ipfs-starage/peer5:/data/ipfs
+
+    ports:
+      - "5051:5001"
+      - "4051:4001"
+      - "8130:8080"
+
+    networks:
+      - textile
+

@@ -14,8 +14,11 @@ const energyMonitorService = require('../services/energy-monitor-service');
 
 // connect to ipfs daemon API server
 const ipfs = ipfsClient('localhost', '5001', { protocol: 'http' });
-
-
+const ipfs1 = ipfsClient('localhost', '5011', { protocol: 'http' });
+const ipfs2 = ipfsClient('localhost', '5021', { protocol: 'http' });
+const ipfs3 = ipfsClient('localhost', '5031', { protocol: 'http' });
+const ipfs4 = ipfsClient('localhost', '5041', { protocol: 'http' });
+const ipfs5 = ipfsClient('localhost', '5051', { protocol: 'http' });
 
 
 //     /* The "pinataMetadata" object will not be part of your content added to IPFS */
@@ -37,102 +40,102 @@ const ipfs = ipfsClient('localhost', '5001', { protocol: 'http' });
 //         Any valid JSON goes here
 //     }
 
-// router.post('/json', async (req, res) => {
-//     //todo request body serialization and validation
-//
-//     //parsing
-//     const cidVersion = req.body.hasOwnProperty('options') ? (req.body.options.cidVersion || undefined): undefined;
-//     // metadata type name timestamp
-//     const metadata = req.body.metadata || undefined;
-//     const content = req.body.content || undefined;
-//
-//     // convert JSON object to String
-//     const jsonStr = JSON.stringify(content);
-//
-//     // read json string to Buffer
-//     const buf = Buffer.from(jsonStr);
-//
-//     const options = cidVersion ? {cidVersion: cidVersion} : undefined;
-//
-//     let bufRes = undefined;
-//
-//     try {
-//         bufRes = await ipfs.add(buf, options);
-//     } catch (e) {
-//         console.log(bufRes);
-//         res.status(500).send(e);
-//     }
-//
-//     // Create a new MongoClient
-//     const client = new MongoClient(constants.MONGODB_URL,  { useNewUrlParser: true });
-//
-//     // Use connect method to connect to the Server
-//     client.connect(function(err) {
-//         if (err) {
-//             res.status(500).send(err);
-//         }
-//
-//         const db = client.db(constants.MONGODB_NAME);
-//
-//         const doc = { metadata: metadata, options: { cidVersion: cidVersion }, hash: bufRes || bufRes[0].hash };
-//
-//         db.collection(jsonPin).insertOne(doc, function (err, result) {
-//             client.close();
-//             res.send({
-//                 ipfsHash: result.ops[0].hash[0].hash,
-//                 pinSize: result.ops[0].hash[0].size,
-//                 date: Date.now()
-//             })
-//         })
-//     });
-// });
+router.post('/json', async (req, res) => {
+    //todo request body serialization and validation
 
-// every 7 minutes
-setInterval((param1)=> {
-    service.queryAirQuality(async (data) => {
-        // convert JSON object to String
-        const jsonStr = JSON.stringify(data);
+    //parsing
+    const cidVersion = req.body.hasOwnProperty('options') ? (req.body.options.cidVersion || undefined): undefined;
+    // metadata type name timestamp
+    const metadata = req.body.metadata || undefined;
+    const content = req.body.content || undefined;
 
-        // read json string to Buffer
-        const buf = Buffer.from(jsonStr);
+    // convert JSON object to String
+    const jsonStr = JSON.stringify(content);
 
-        const options = { cidVersion: 1 };
+    // read json string to Buffer
+    const buf = Buffer.from(jsonStr);
 
-        let bufRes = undefined;
+    const options = cidVersion ? {cidVersion: cidVersion} : undefined;
 
-        try {
-            bufRes = await ipfs.add(buf, options);
-            console.log(bufRes);
-        } catch (e) {
-            console.log(bufRes);
+    let bufRes = undefined;
+
+    try {
+        bufRes = await ipfs.add(buf, options);
+    } catch (e) {
+        console.log(bufRes);
+        res.status(500).send(e);
+    }
+
+    // Create a new MongoClient
+    const client = new MongoClient(constants.MONGODB_URL,  { useNewUrlParser: true });
+
+    // Use connect method to connect to the Server
+    client.connect(function(err) {
+        if (err) {
+            res.status(500).send(err);
         }
 
-        // Create a new MongoClient
-        const client = new MongoClient(constants.MONGODB_URL,  { useNewUrlParser: true });
+        const db = client.db(constants.MONGODB_NAME);
 
-        // Use connect method to connect to the Server
-        client.connect(function(err) {
-            if (err) {
-                console.log(err)
-            }
+        const doc = { metadata: metadata, options: { cidVersion: cidVersion }, hash: bufRes || bufRes[0].hash };
 
-            const db = client.db(constants.MONGODB_NAME);
-
-            const doc = { metadata: {
-                    name: data.name,
-                    user: data.user,
-                    time: data.time,
-                    type: constants.AIR_QUALITY
-                }, options: options, hash: bufRes[0].hash };
-
-            db.collection(constants.AIR_QUALITY).insertOne(doc, function (err, result) {
-                client.close();
+        db.collection(jsonPin).insertOne(doc, function (err, result) {
+            client.close();
+            res.send({
+                ipfsHash: result.ops[0].hash[0].hash,
+                pinSize: result.ops[0].hash[0].size,
+                date: Date.now()
             })
-        });
+        })
+    });
+});
 
-    })
-}, 20000);
-
+// // every 7 minutes
+// setInterval((param1)=> {
+//     service.queryAirQuality(async (data) => {
+//         // convert JSON object to String
+//         const jsonStr = JSON.stringify(data);
+//
+//         // read json string to Buffer
+//         const buf = Buffer.from(jsonStr);
+//
+//         const options = { cidVersion: 1 };
+//
+//         let bufRes = undefined;
+//
+//         try {
+//             bufRes = await ipfs2.add(buf, options);
+//             console.log(bufRes);
+//         } catch (e) {
+//             console.log(bufRes);
+//         }
+//
+//         // Create a new MongoClient
+//         const client = new MongoClient(constants.MONGODB_URL,  { useNewUrlParser: true });
+//
+//         // Use connect method to connect to the Server
+//         client.connect(function(err) {
+//             if (err) {
+//                 console.log(err)
+//             }
+//
+//             const db = client.db(constants.MONGODB_NAME);
+//
+//             const doc = { metadata: {
+//                     name: data.name,
+//                     user: data.user,
+//                     time: data.time,
+//                     type: constants.AIR_QUALITY
+//                 }, options: options, hash: bufRes[0].hash };
+//
+//             db.collection(constants.AIR_QUALITY).insertOne(doc, function (err, result) {
+//                 client.close();
+//             })
+//         });
+//
+//     })
+// }, 20000);
+//
 //every 5 minute
 setInterval(()=> {
     energyMonitorService.queryEnergyMonitor(async (data) => {
@@ -147,7 +150,7 @@ setInterval(()=> {
         let bufRes = undefined;
 
         try {
-            bufRes = await ipfs.add(buf, options);
+            bufRes = await ipfs3.add(buf, options);
             console.log(bufRes);
         } catch (e) {
             console.log(bufRes);

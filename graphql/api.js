@@ -1,143 +1,102 @@
 const MongoClient = require('mongodb').MongoClient;
 const constants = require('../constants');
 
-const { Textile } = require("@textile/js-http-client");
-
-const airQualitySchema = require('../schemas/AirQuality');
-const cushionSchema = require('../schemas/Cushion');
-const energyApplianceMonitorSchema = require('../schemas/EnergyApplianceMonitor');
-const energyMonitorSchema = require('../schemas/EnergyMonitor');
-const ipCameraSchema = require('../schemas/IPCamera');
-const ipfsCameraSchema = require('../schemas/IPFSCamera');
-const smartTableSchema = require('../schemas/SmartTable');
-
-const threadConfig = require('../config.json');
-
-// Or, create an instance specifying your custom Textile node API connection
-const textileAirQuality = new Textile({
-    url: "http://127.0.0.1",
-    port: 40600,
-});
-
-const textileCushion = new Textile({
-    url: "http://127.0.0.1",
-    port: 40700,
-});
-
-const textileEnergyAppMonitor = new Textile({
-    url: "http://127.0.0.1",
-    port: 40800,
-});
-
-const textileEnergyMonitor = new Textile({
-    url: "http://127.0.0.1",
-    port: 40900,
-});
-
-const textileIPCamera = new Textile({
-    url: "http://127.0.0.1",
-    port: 41000,
-});
-
-const textileIPFSCamera = new Textile({
-    url: "http://127.0.0.1",
-    port: 41100,
-});
-
-const textileSmartTable = new Textile({
-    url: "http://127.0.0.1",
-    port: 41200,
-});
-
-const textileSleep = new Textile({
-    url: "http://127.0.0.1",
-    port: 41300,
-});
-
-const textileHeartRate = new Textile({
-    url: "http://127.0.0.1",
-    port: 41400,
-});
-
-const textileStandHour = new Textile({
-    url: "http://127.0.0.1",
-    port: 41500,
-});
-
-const textileStepCount = new Textile({
-    url: "http://127.0.0.1",
-    port: 41600,
-});
-
-const textileExerciseTime = new Textile({
-    url: "http://127.0.0.1",
-    port: 41700,
-});
-
-
-const AIR_QUALITY = "air-quality";
-const CUSHION = "cushion";
-const ENERGY_APPLIANCE_MONITOR = "energy-appliance-monitor";
-const ENERGY_MONITOR = "energy-monitor";
-const IP_CAMERA = "ip-camera";
-const IPFS_CAMERA = "ipfs-camera";
-const SMART_TABLE = "smart-table";
-
-const SLEEP = "sleep";
-const HEART_RATE = "heart-rate";
-const STAND_HOUR = "stand-hour";
-const STEP_COUNT = "step-count";
-const EXERCISE_TIME = "exercise-time";
+const ipfsClient = require('ipfs-http-client');
+// connect to ipfs daemon API server
+const ipfs = ipfsClient('localhost', '5001', { protocol: 'http' });
 
 // The root provides a resolver function for each API endpoint
 const root = {
+    // get latest data
+    // airQuality: async ({names}) => {
+    //     const LIMIT = 1000;
+    //     let data = [];
+    //     try {
+    //         const list = await ipfs.files.list(threadConfig[AIR_QUALITY].id, "", LIMIT);
+    //
+    //         if (list !== undefined) {
+    //             for await (let item of list.items) {
+    //                 const buf = await textileAirQuality.blocks.fileContent(item.block);
+    //                 const str = String.fromCharCode.apply(null, new Uint8Array(buf));
+    //                 data.push(JSON.parse(str))
+    //             }
+    //         }
+    //     }catch (e) {
+    //         if(e.message === "Not Found") {
+    //             console.log("airQuality not found")
+    //         }
+    //     }
+    //
+    //     let output = [];
+    //     let uniqueAirQualityNames = [];
+    //
+    //     if (names && names.length) {
+    //         uniqueAirQualityNames = names;
+    //     } else {
+    //         const map = new Map();
+    //         for (const item of data) {
+    //             if(!map.has(item.name)){
+    //                 map.set(item.name, true);    // set any value to Map
+    //                 uniqueAirQualityNames.push(item.name);
+    //             }
+    //         }
+    //     }
+    //
+    //     for (let i = 0; i < uniqueAirQualityNames.length; i++) {
+    //         const filteredData = data.filter(item => item.name === uniqueAirQualityNames[i]);
+    //
+    //         filteredData.sort((a,b) => {
+    //             return new Date(b.time) - new Date(a.time)
+    //         });
+    //
+    //         output.push({...filteredData[0]})
+    //     }
+    //
+    //     return output
+    // },
     airQuality: async ({names}) => {
-        const LIMIT = 1000;
-        let data = [];
-        try {
-            const list = await textileAirQuality.files.list(threadConfig[AIR_QUALITY].id, "", LIMIT);
-
-            if (list !== undefined) {
-                for await (let item of list.items) {
-                    const buf = await textileAirQuality.blocks.fileContent(item.block);
-                    const str = String.fromCharCode.apply(null, new Uint8Array(buf));
-                    data.push(JSON.parse(str))
+        // Create a new MongoClient
+        const client = new MongoClient(constants.MONGODB_URL,  { useNewUrlParser: true });
+        const getAirQuality = new Promise(function(resolve, reject) {
+            client.connect(err => {
+                if (err) {
+                    res.status(500).send(err);
                 }
-            }
-        }catch (e) {
-            if(e.message === "Not Found") {
-                console.log("airQuality not found")
-            }
-        }
 
-        let output = [];
-        let uniqueAirQualityNames = [];
+                const db = client.db(constants.MONGODB_NAME);
 
-        if (names && names.length) {
-            uniqueAirQualityNames = names;
-        } else {
-            const map = new Map();
-            for (const item of data) {
-                if(!map.has(item.name)){
-                    map.set(item.name, true);    // set any value to Map
-                    uniqueAirQualityNames.push(item.name);
-                }
-            }
-        }
+                return db.collection(constants.AIR_QUALITY).find({
+                    'metadata.name': { $in: names }
+                }).toArray(
+                    (err, docs)=> {
+                        client.close();
 
-        for (let i = 0; i < uniqueAirQualityNames.length; i++) {
-            const filteredData = data.filter(item => item.name === uniqueAirQualityNames[i]);
-
-            filteredData.sort((a,b) => {
-                return new Date(b.time) - new Date(a.time)
+                        resolve(docs);
+                    }
+                )
             });
+        });
+        let docs = await getAirQuality;
 
-            output.push({...filteredData[0]})
+
+        // read json string to Buffer
+
+        const output = [];
+        const getAirQualityDocs = new Promise(function(resolve, reject) {
+
+        });
+        for await (let doc of docs) {
+            const CID = doc.hash;
+
+            const a = await ipfs.cat(CID)
+            console.log(a)
+
+            output.push(jsonFile);
         }
 
         return output
-    },
 
+    },
     airQualityList: async ({names, orderBy}) => {
         const LIMIT = 1000;
         let data = [];
