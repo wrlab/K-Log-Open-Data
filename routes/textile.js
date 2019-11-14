@@ -23,7 +23,6 @@ const stepCountSchema = require('../schemas/StepCount');
 const threadConfig = require('../config.json');
 
 // Or, create an instance specifying your custom Textile node API connection
-// Or, create an instance specifying your custom Textile node API connection
 const textileAirQuality = new Textile({
     url: "http://127.0.0.1",
     port: 40600,

@@ -56,46 +56,54 @@ const root = {
     // },
     airQuality: async ({names}) => {
         // Create a new MongoClient
-        const client = new MongoClient(constants.MONGODB_URL,  { useNewUrlParser: true });
-        const getAirQuality = new Promise(function(resolve, reject) {
-            client.connect(err => {
-                if (err) {
-                    res.status(500).send(err);
-                }
+        const client = new MongoClient(constants.MONGODB_URL);
 
-                const db = client.db(constants.MONGODB_NAME);
+        await client.connect();
 
-                return db.collection(constants.AIR_QUALITY).find({
-                    'metadata.name': { $in: names }
-                }).toArray(
-                    (err, docs)=> {
-                        client.close();
+        const db = client.db('k-log-pinning-service');
 
-                        resolve(docs);
-                    }
-                )
-            });
-        });
-        let docs = await getAirQuality;
+        // Get the collection
+        const col = db.collection(constants.AIR_QUALITY);
 
+        const queryResults = await col.find({
+            'metadata.name': { $in: names }
+        }).limit(1).toArray();
 
-        // read json string to Buffer
+        await client.close();
 
-        const output = [];
-        const getAirQualityDocs = new Promise(function(resolve, reject) {
+        const buf = await ipfs.cat('bafkreia2yagdbf3crcghivgjscqba72qyphagvc7sigoxfd3a7omwe5ini');
 
-        });
-        for await (let doc of docs) {
-            const CID = doc.hash;
-
-            const a = await ipfs.cat(CID)
-            console.log(a)
-
-            output.push(jsonFile);
-        }
-
-        return output
-
+        return [JSON.parse(buf.toString())]
+        // const getAirQuality = new Promise(function(resolve, reject) {
+        //     client.connect(err => {
+        //         if (err) {
+        //             res.status(500).send(err);
+        //         }
+        //
+        //         const db = client.db(constants.MONGODB_NAME);
+        //
+        //         return
+        //     });
+        // });
+        // let docs = await getAirQuality;
+        //
+        //
+        // // read json string to Buffer
+        //
+        // const output = [];
+        // const getAirQualityDocs = new Promise(function(resolve, reject) {
+        //
+        // });
+        // for await (let doc of docs) {
+        //     const CID = doc.hash;
+        //
+        //     const a = await ipfs.cat(CID)
+        //     console.log(a)
+        //
+        //     output.push(jsonFile);
+        // }
+        //
+        // return output
     },
     airQualityList: async ({names, orderBy}) => {
         const LIMIT = 1000;
