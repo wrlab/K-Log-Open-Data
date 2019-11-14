@@ -1,4 +1,5 @@
 # Logs
+videos
 logs
 *.log
 .idea
@@ -6,7 +7,7 @@ orbitdb
 ipfs-webizing-td
 db-http-api-client
 ipfs-starage
-videos
+
 # Runtime data
 pids
 *.pid
