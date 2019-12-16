@@ -68,7 +68,7 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
-app.listen(4000, async () => {
+app.listen(4000, '0.0.0.0',  async () => {
   console.log('Server running on port 4000');
 });
 
