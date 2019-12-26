@@ -37,24 +37,8 @@ router.post('/heart-rate', async (req, res) => {
     const ipfsData = [];
 
     for await (let item of content) {
-        // convert JSON object to String
-        const jsonStr = JSON.stringify(item);
-
-        // read json string to Buffer
-        const buf = Buffer.from(jsonStr);
-
-        let bufRes = undefined;
-
         try {
-            bufRes = await ipfs.add(buf);
-            console.log(bufRes);
-            ipfsData.push({hash: bufRes[0].hash, metadata: {
-                    type: item.type,
-                    name: item.name,
-                    user: item.user,
-                    startDate: item.startDate,
-                    endDate: item.endDate
-                }});
+            ipfsData.push(item);
         } catch (e) {
             console.log(e);
         }
@@ -66,10 +50,7 @@ router.post('/heart-rate', async (req, res) => {
         let bulk = [];
 
         for (let item of ipfsData) {
-
-            const doc = { metadata: item.metadata, options: { cidVersion: 1 }, hash: item.hash };
-
-            bulk.push(doc);
+            bulk.push(item);
         }
 
         const resQuery = await db.collection(constants.HEART_RATE).insertMany(bulk);
@@ -102,24 +83,8 @@ router.post('/step-count', async (req, res) => {
     const ipfsData = [];
 
     for await (let item of content) {
-        // convert JSON object to String
-        const jsonStr = JSON.stringify(item);
-
-        // read json string to Buffer
-        const buf = Buffer.from(jsonStr);
-
-        let bufRes = undefined;
-
         try {
-            bufRes = await ipfs.add(buf);
-            console.log(bufRes);
-            ipfsData.push({hash: bufRes[0].hash, metadata: {
-                    type: item.type,
-                    name: item.name,
-                    user: item.user,
-                    startDate: item.startDate,
-                    endDate: item.endDate
-                }});
+            ipfsData.push(item);
         } catch (e) {
             console.log(e);
         }
@@ -131,10 +96,7 @@ router.post('/step-count', async (req, res) => {
         let bulk = [];
 
         for (let item of ipfsData) {
-
-            const doc = { metadata: item.metadata, options: { cidVersion: 1 }, hash: item.hash };
-
-            bulk.push(doc);
+            bulk.push(item);
         }
 
         const resQuery = await db.collection(constants.STEP_COUNT).insertMany(bulk);
@@ -173,24 +135,9 @@ router.post('/exercise-time', async (req, res) => {
     const ipfsData = [];
 
     for await (let item of content) {
-        // convert JSON object to String
-        const jsonStr = JSON.stringify(item);
-
-        // read json string to Buffer
-        const buf = Buffer.from(jsonStr);
-
-        let bufRes = undefined;
 
         try {
-            bufRes = await ipfs.add(buf);
-            console.log(bufRes);
-            ipfsData.push({hash: bufRes[0].hash, metadata: {
-                    type: item.type,
-                    name: item.name,
-                    user: item.user,
-                    startDate: item.startDate,
-                    endDate: item.endDate
-                }});
+            ipfsData.push(item);
         } catch (e) {
             console.log(e);
         }
@@ -202,10 +149,7 @@ router.post('/exercise-time', async (req, res) => {
         let bulk = [];
 
         for (let item of ipfsData) {
-
-            const doc = { metadata: item.metadata, options: { cidVersion: 1 }, hash: item.hash };
-
-            bulk.push(doc);
+            bulk.push(item);
         }
 
         const resQuery = await db.collection(constants.EXERCISE_TIME).insertMany(bulk);
@@ -238,24 +182,8 @@ router.post('/sleep', async (req, res) => {
     const ipfsData = [];
 
     for await (let item of content) {
-        // convert JSON object to String
-        const jsonStr = JSON.stringify(item);
-
-        // read json string to Buffer
-        const buf = Buffer.from(jsonStr);
-
-        let bufRes = undefined;
-
         try {
-            bufRes = await ipfs.add(buf);
-            console.log(bufRes);
-            ipfsData.push({hash: bufRes[0].hash, metadata: {
-                    type: item.type,
-                    name: item.name,
-                    user: item.user,
-                    startDate: item.startDate,
-                    endDate: item.endDate
-                }});
+            ipfsData.push(item);
         } catch (e) {
             console.log(e);
         }
@@ -267,10 +195,7 @@ router.post('/sleep', async (req, res) => {
         let bulk = [];
 
         for (let item of ipfsData) {
-
-            const doc = { metadata: item.metadata, options: { cidVersion: 1 }, hash: item.hash };
-
-            bulk.push(doc);
+            bulk.push(item);
         }
 
         const resQuery = await db.collection(constants.SLEEP).insertMany(bulk);
@@ -303,24 +228,9 @@ router.post('/stand-hour', async (req, res) => {
     const ipfsData = [];
 
     for await (let item of content) {
-        // convert JSON object to String
-        const jsonStr = JSON.stringify(item);
-
-        // read json string to Buffer
-        const buf = Buffer.from(jsonStr);
-
-        let bufRes = undefined;
 
         try {
-            bufRes = await ipfs.add(buf);
-            console.log(bufRes);
-            ipfsData.push({hash: bufRes[0].hash, metadata: {
-                    type: item.type,
-                    name: item.name,
-                    user: item.user,
-                    startDate: item.startDate,
-                    endDate: item.endDate
-                }});
+            ipfsData.push(item);
         } catch (e) {
             console.log(e);
         }
@@ -332,10 +242,7 @@ router.post('/stand-hour', async (req, res) => {
         let bulk = [];
 
         for (let item of ipfsData) {
-
-            const doc = { metadata: item.metadata, options: { cidVersion: 1 }, hash: item.hash };
-
-            bulk.push(doc);
+            bulk.push(item);
         }
 
         const resQuery = await db.collection(constants.STAND_HOUR).insertMany(bulk);
